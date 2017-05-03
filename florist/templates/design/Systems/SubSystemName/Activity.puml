@@ -1,0 +1,44 @@
+@startuml
+
+partition IDE  #cccccc {
+  (*) --> "Create Project"
+  --> ===S1===
+  --> "Write Code"
+}
+
+partition CI/CD #cccccc {
+  "Commit Code" --> "Kick off Build"
+  "Execute Tests" --> "Evaluate Test Results"
+}
+
+partition CAADE {
+    ===S1=== --> "Select Application Stack"
+    --> "Modify Application Stack"
+    --> "Test Application Stack"
+    --> "Share Application Stack"
+    --> (*)
+     "Write Code" --> "Select Environment (Dev)"
+     "Select Environment (Dev)" --> "Launch Application (Dev)"
+     "Launch Application (Dev)" --> "Debug Application"
+     If "bugs found?" Then
+      -->[yes] "Write Code"
+      else
+      -->[no] "Commit Code"
+      endif
+  "Kick off Build"  --> "Select Environment (Build)"
+  "Select Environment (Build)" --> "Launch Build"
+  If "check build" Then
+      -->[succeed] "Select Enironment (Test)"
+      --> "Launch Application (Test)"
+  Else
+  -->[failed] "Write Code"
+
+  "Evaluate Test Results" -> "Select Environment (Production)"
+   --> "Launch Application (Production)"
+}
+
+partition CI/CD #cccccc {
+  "Launch Application (Test)" -> "Execute Tests"
+}
+
+@enduml

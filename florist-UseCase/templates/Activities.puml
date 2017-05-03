@@ -1,0 +1,9 @@
+@startuml
+|actorName|
+start
+|#ffffaa|<%= systemName %>|
+:activity;
+|Application Developer|
+:activity;
+stop
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+
+package "<%= subsystem.name %>" #dddddd {}
+
+
+package "<%= system.name %>"  #ffffaa {
+  interface "CLI"
+  interface "Web"
+  interface "REST"
+
+  class "Class1" {
+
+  }
+
+}
+"CLI" -- "Class1"
+
+@enduml

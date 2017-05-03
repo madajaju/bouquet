@@ -1,0 +1,32 @@
+{
+  "name": "sails-generate-florist-scenario",
+  "version": "0.10.0",
+  "description": "sails generate florist-Scenario",
+  "main": "Generator.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "florist-Scenario",
+    "generator",
+    "sails",
+    "generate",
+    "plugin"
+  ],
+  "author": "balderdashy",
+  "license": "MIT",
+  "dependencies": {
+  	"lodash": ">=2.4.x",
+  	"merge-defaults": ">=0.1.0"
+  },
+  "devDependencies": {
+    "sails-generate": "*",
+    "reportback": "*",
+    "fs-extra": "*"
+  },
+  "sailsGenerator": {
+    "type": "florist-Scenario",
+    "behavior": "overrides `sails generate florist-Scenario`",
+    "sailsVersion": "~0.10.0"
+  }
+}
