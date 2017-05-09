@@ -1,13 +1,13 @@
 {
-  "name": "sails-generate-florist-actor",
+  "name": "sails-generate-bouquet-actor",
   "version": "0.10.0",
-  "description": "sails generate florist-Actor",
+  "description": "sails generate bouquet-Actor",
   "main": "Generator.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
-    "florist-Actor",
+    "bouquet-Actor",
     "generator",
     "sails",
     "generate",
@@ -25,8 +25,8 @@
     "fs-extra": "*"
   },
   "sailsGenerator": {
-    "type": "florist-Actor",
-    "behavior": "overrides `sails generate florist-Actor`",
+    "type": "bouquet-Actor",
+    "behavior": "overrides `sails generate bouquet-Actor`",
     "sailsVersion": "~0.10.0"
   }
 }

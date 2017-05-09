@@ -1,6 +1,6 @@
-# sails-generate-florist-subsystem
+# sails-generate-bouquet-subsystem
 
-A `florist-SubSystem` generator for use with the Sails command-line interface.
+A `bouquet-SubSystem` generator for use with the Sails command-line interface.
 
 Certain generators are installed by default in Sails, but they can be overridden.  Other generators create entirely new things.  Check the [Sails docs](http://sailsjs.org/#!documentation) for information on installing generator overrides / custom generators and information on building your own generators.
 
@@ -9,7 +9,7 @@ Certain generators are installed by default in Sails, but they can be overridden
 ### Installation
 
 ```sh
-$ npm install sails-generate-florist-subsystem
+$ npm install sails-generate-bouquet-subsystem
 ```
 
 
@@ -18,7 +18,7 @@ $ npm install sails-generate-florist-subsystem
 ##### On the command line
 
 ```sh
-$ sails generate florist-SubSystem 
+$ sails generate bouquet-SubSystem 
 ```
 
 

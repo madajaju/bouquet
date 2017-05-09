@@ -1,6 +1,6 @@
-# sails-generate-florist-scenario
+# sails-generate-bouquet-scenario
 
-A `florist-Scenario` generator for use with the Sails command-line interface.
+A `bouquet-Scenario` generator for use with the Sails command-line interface.
 
 Certain generators are installed by default in Sails, but they can be overridden.  Other generators create entirely new things.  Check the [Sails docs](http://sailsjs.org/#!documentation) for information on installing generator overrides / custom generators and information on building your own generators.
 
@@ -9,7 +9,7 @@ Certain generators are installed by default in Sails, but they can be overridden
 ### Installation
 
 ```sh
-$ npm install sails-generate-florist-scenario
+$ npm install sails-generate-bouquet-scenario
 ```
 
 
@@ -18,7 +18,7 @@ $ npm install sails-generate-florist-scenario
 ##### On the command line
 
 ```sh
-$ sails generate florist-Scenario 
+$ sails generate bouquet-Scenario 
 ```
 
 

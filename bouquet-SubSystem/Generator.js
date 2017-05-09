@@ -8,12 +8,12 @@ _.defaults = require('merge-defaults');
 
 
 /**
- * sails-generate-florist-subsystem
+ * sails-generate-bouquet-subsystem
  *
  * Usage:
- * `sails generate florist-SubSystem`
+ * `sails generate bouquet-SubSystem`
  *
- * @description Generates a florist-SubSystem
+ * @description Generates a bouquet-SubSystem
  * @help See http://links.sailsjs.org/docs/generators
  */
 
@@ -35,10 +35,10 @@ module.exports = {
     // scope.args are the raw command line arguments.
     //
     // e.g. if someone runs:
-    // $ sails generate florist-SubSystem user find create update
+    // $ sails generate bouquet-SubSystem user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     if (!scope.args[0]) {
-      return cb( new Error('Please provide a name for this florist-SubSystem.') );
+      return cb( new Error('Please provide a name for this bouquet-SubSystem.') );
     }
 
     // scope.rootPath is the base path for this generator
@@ -125,9 +125,9 @@ module.exports = {
 
 function INVALID_SCOPE_VARIABLE (varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "florist-SubSystem":\n'+
+  'Issue encountered in generator "bouquet-SubSystem":\n'+
   'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-florist-subsystem`, please resolve this '+
+  'If you are the author of `sails-generate-bouquet-subsystem`, please resolve this '+
   'issue and publish a new patch release.';
 
   message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');

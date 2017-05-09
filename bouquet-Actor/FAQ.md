@@ -6,10 +6,10 @@
 The latest stable version in npm is always a safe bet.
 
 ```sh
-$ npm install sails-generate-florist-actor
+$ npm install sails-generate-bouquet-actor
 ```
 
-[![NPM](https://nodei.co/npm/sails-generate-florist-actor.png?downloads=true&stars=true)](https://nodei.co/npm/sails-generate-florist-actor/)
+[![NPM](https://nodei.co/npm/sails-generate-bouquet-actor.png?downloads=true&stars=true)](https://nodei.co/npm/sails-generate-bouquet-actor/)
 
 
 
@@ -78,4 +78,4 @@ If you feel that yours is the better approach, and should be the default, share 
 
 
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails-generate-florist-actor/FAQ.md)
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails-generate-bouquet-actor/FAQ.md)

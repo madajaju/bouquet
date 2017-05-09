@@ -1,5 +1,5 @@
 {
-  "name": "florist",
+  "name": "bouquet",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -31,7 +31,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/florist.git"
+    "url": "git://github.com/anonymous node/sails user/bouquet.git"
   },
   "author": "anonymous node/sails user",
   "license": ""

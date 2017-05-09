@@ -1,15 +1,15 @@
-#Florist
+#bouquet
 
 In the 1990s I started dabbling with a new kind of system analysis.
 Object Oriented Ssystem Analysis. I quickly became familiar with all of the great OOA/D tools.
 The one that stood out for me was Rational Rose. I dove right in and over time became quiet preficent in using the tool.
 I quickly started writing scripts to to make my life easier and automate repeated tasks.
-This was the birth of a project named Florist. 
+This was the birth of a project named bouquet. 
  
 Move forward 20 years. I am still using UML to design and architect systems, but I also use
 rapid prototyping technologies like sails, rails and grails. Most recently I am focusing on
-nodeJS/sails development. I dusted off my old Florist specs and started working on resurrecting
-Florist with the latest technologies.
+nodeJS/sails development. I dusted off my old bouquet specs and started working on resurrecting
+bouquet with the latest technologies.
 
 These are the technologies that I am leveraging this time.
 
@@ -63,7 +63,7 @@ with very little lifting.
 MD - Markdown language is used to quickly and easily document a git hub repository. The language allows
 for simple text based documentation to make it quick and easy. 
 
-#Florist
+#bouquet
 
 Using the concept of convention over configurability of SailsJS, I extended the same concepts that 
 already exist in SailsJS and created a design and bin directory in the project root directory. 
@@ -104,7 +104,151 @@ subdirectories in the design directory as shown below.
 * views - Stand SailsJS Directory
 
 
+### Binary setup
+There are several different kinds of binary files that are used in the bouquet pattern.
+1. Top Level Command script - "projectName"
+1. Actor Command Script - "projectName-actorName"
+1. Subsystem Command Script - "projectName-subsystemName"
+1. Command Script - "projectName-actorName-command", "projectName-subsystemName-command", or "projectName-command"
+
+#### Top Level Command Script
+There should be one system command that contains all of the commands for the system using the commander package.
+
+* The name of the file should be "projectName" in the bin directory.
+* The for each actor there should be a command for the actor. This will give a command line interface for each actor
+* There should be a command for each subsystem as well. This will give the ability for each subsystem to have a CLI.
+* There should be a command for each of the top level scenarios for the system.
+The following is an example of this top level command file
+
+In this case "caade"
+```json
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version("0.2.0")
+  // Actors
+  .command('app <command> <applicationName>', 'Work with applications')
+  .command('stack <command> <stackName>', 'Work with applications')
+  .command('adm <command> <stackName>', 'Work with applications')
+  // SubSystems 
+  .command('policy <command> <policyName>', 'Work with Policies')
+  .command('cloud <command> <cloudName>', 'Work with Clouds')
+  .command('environment <command> <EnvironmentName>', 'Work with applications')
+  .command('service <command> <EnvironmentName>', 'Work with servioes')
+  .command('user <command> <UserName>', 'Work with Users')
+  // Scenarios
+  .command('init', 'initalize Caade on your machine')
+  .command('up [service-name]', 'Launch an application in a specific environment')
+  .command('update [service-name]', 'Update web service with new code')
+  .command('run <command>', 'Run a command in specified environment')
+  .command('ps <command>', 'List processes for the application')
+  .command('kill <serviceName>', 'Kill specific service for the application')
+  .command('logs [serviceName]', 'Get logs of the application')
+  .command('deploy', 'Deploy an application')
+  .parse(process.argv);
+
+```
+
+#### Actor Command Script
+This is very much like the Top level command script but limits the commands to the actor
+The file is named "projectName-actorName" a simple example follows.
+
+In this case "caade-app"
+
+```json
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version("0.2.0")
+  .command('create <application name>', 'Create an application')
+  .command('get <application name>', 'Create an application')
+  .command('ls', 'List my applications')
+  .command('remove <application name>', 'Remove my application')
+  .command('show <application name>', 'show details about my application')
+  .parse(process.argv);
+
+```
+
+#### Subsytem Command Script
+This is very much like the Top level command script but limits the commands to the subsystem
+The file is named "projectName-subsystemName" a simple example follows.
+
+In this case "caade-cloud"
+
+```json
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version("0.2.0")
+  .command('create <cloudName>', 'Attach a Cloud')
+  .command('ls', 'List the Clouds attached')
+  .command('remove <cloudName>', 'Remove a Cloud')
+  .command('show <cloudName>', 'Show details about a Cloud')
+  .parse(process.argv);
+
+```
+
+#### Command Script
+Command scripts are where everything really happens. The previous scripts just setup for accessing the
+command scripts. The naming convention of the command scripts follows the actor and subsystem nomenclature
+"projectName-actorName-command", "projectName-subsystemName-command", or "projectName-command".
+The trick of the command is to connect to the rest interface of the system. This should coorespond
+to the controller with a simalar name. For example if you have actor command script then there should
+be a cooresponding controller for the actor. This way the REST and CLI APIs are consistent.
+
+The following is an example of a simple Command Script that accesses the rest interface.
+In this case it shows information about a stack in the system
+
+```json
+#!/usr/bin/env node
+
+var program = require('commander');
+var Client = require('node-rest-client').Client; // Needed to access the REST Interfacce.
+var config = require('./system-config'); // Contains the URL to connect to for the REST Interface
+var _ = require('lodash');
+
+var client = new Client();
+
+program
+  .option('-v, --version <versionNumber>', 'Show an application stack with version')
+  .parse(process.argv);
+
+var name = program.args;
+
+// Create the REST Command
+var url = config.caadeUrl + "/stack/show?";
+
+if(name) {
+  url += "name=" + name[0];
+}
+
+if (program.version) {
+  url += "&version=" + program.version;
+}
+// Call the REST Interface via HTTP Client.
+client.get(url, function (data, response) {
+  // parsed response body as js object
+  if(data.error) {
+    console.error(data.error);
+  }
+  else {
+    console.log(data.stack);
+    console.log("Name:" + data.stack.name + "\tVersion: " + data.stack.version);
+  }
+});
+
+```
+
+
 ##Future 
 I know as I start using this I will add more generated artifacts to the system. So if you have any ideas please
 let me know. You can find more at the github project 
+
+
 

@@ -1,13 +1,13 @@
 {
-  "name": "sails-generate-florist-scenario",
+  "name": "sails-generate-bouquet-scenario",
   "version": "0.10.0",
-  "description": "sails generate florist-Scenario",
+  "description": "sails generate bouquet-Scenario",
   "main": "Generator.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
-    "florist-Scenario",
+    "bouquet-Scenario",
     "generator",
     "sails",
     "generate",
@@ -25,8 +25,8 @@
     "fs-extra": "*"
   },
   "sailsGenerator": {
-    "type": "florist-Scenario",
-    "behavior": "overrides `sails generate florist-Scenario`",
+    "type": "bouquet-Scenario",
+    "behavior": "overrides `sails generate bouquet-Scenario`",
     "sailsVersion": "~0.10.0"
   }
 }

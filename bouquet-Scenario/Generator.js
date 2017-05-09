@@ -8,12 +8,12 @@ _.defaults = require('merge-defaults');
 
 
 /**
- * sails-generate-florist-scenario
+ * sails-generate-bouquet-scenario
  *
  * Usage:
- * `sails generate florist-Scenario`
+ * `sails generate bouquet-Scenario`
  *
- * @description Generates a florist-Scenario
+ * @description Generates a bouquet-Scenario
  * @help See http://links.sailsjs.org/docs/generators
  */
 
@@ -35,10 +35,10 @@ module.exports = {
     // scope.args are the raw command line arguments.
     //
     // e.g. if someone runs:
-    // $ sails generate florist-Scenario user find create update
+    // $ sails generate bouquet-Scenario user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     if (!scope.args[0]) {
-      return cb( new Error('Please provide a name for this florist-Scenario.') );
+      return cb( new Error('Please provide a name for this bouquet-Scenario.') );
     }
 
     // scope.rootPath is the base path for this generator
@@ -125,9 +125,9 @@ module.exports = {
 
 function INVALID_SCOPE_VARIABLE (varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "florist-Scenario":\n'+
+  'Issue encountered in generator "bouquet-Scenario":\n'+
   'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-florist-scenario`, please resolve this '+
+  'If you are the author of `sails-generate-bouquet-scenario`, please resolve this '+
   'issue and publish a new patch release.';
 
   message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');

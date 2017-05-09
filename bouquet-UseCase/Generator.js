@@ -8,12 +8,12 @@ _.defaults = require('merge-defaults');
 
 
 /**
- * sails-generate-florist-usecase
+ * sails-generate-bouquet-usecase
  *
  * Usage:
- * `sails generate florist-UseCase`
+ * `sails generate bouquet-UseCase`
  *
- * @description Generates a florist-UseCase
+ * @description Generates a bouquet-UseCase
  * @help See http://links.sailsjs.org/docs/generators
  */
 
@@ -35,10 +35,10 @@ module.exports = {
     // scope.args are the raw command line arguments.
     //
     // e.g. if someone runs:
-    // $ sails generate florist-UseCase user find create update
+    // $ sails generate bouquet-UseCase user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     if (!scope.args[0]) {
-      return cb( new Error('Please provide a name for this florist-UseCase.') );
+      return cb( new Error('Please provide a name for this bouquet-UseCase.') );
     }
 
     // scope.rootPath is the base path for this generator
@@ -128,9 +128,9 @@ module.exports = {
 
 function INVALID_SCOPE_VARIABLE (varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "florist-UseCase":\n'+
+  'Issue encountered in generator "bouquet-UseCase":\n'+
   'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-florist-usecase`, please resolve this '+
+  'If you are the author of `sails-generate-bouquet-usecase`, please resolve this '+
   'issue and publish a new patch release.';
 
   message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');

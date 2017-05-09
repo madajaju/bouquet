@@ -1,9 +1,9 @@
 {
   "generators": {
     "modules": {
-    "florist": "/Users/dwpulsip/yoly/florist/florist",
-    "florist-Actor": "/Users/dwpulsip/yoly/florist/florist-Actor",
-    "florist-UseCase": "/Users/dwpulsip/yoly/florist/florist-UseCase"
+    "bouquet": "/Users/dwpulsip/yoly/bouquet/bouquet",
+    "bouquet-Actor": "/Users/dwpulsip/yoly/bouquet/bouquet-Actor",
+    "bouquet-UseCase": "/Users/dwpulsip/yoly/bouquet/bouquet-UseCase"
     }
   }
 }

@@ -1,13 +1,13 @@
 {
-  "name": "sails-generate-florist-usecase",
+  "name": "sails-generate-bouquet-usecase",
   "version": "0.10.0",
-  "description": "sails generate florist-UseCase",
+  "description": "sails generate bouquet-UseCase",
   "main": "Generator.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
-    "florist-UseCase",
+    "bouquet-UseCase",
     "generator",
     "sails",
     "generate",
@@ -25,8 +25,8 @@
     "fs-extra": "*"
   },
   "sailsGenerator": {
-    "type": "florist-UseCase",
-    "behavior": "overrides `sails generate florist-UseCase`",
+    "type": "bouquet-UseCase",
+    "behavior": "overrides `sails generate bouquet-UseCase`",
     "sailsVersion": "~0.10.0"
   }
 }

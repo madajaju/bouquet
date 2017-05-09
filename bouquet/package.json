@@ -1,13 +1,13 @@
 {
-  "name": "sails-generate-florist",
+  "name": "sails-generate-bouquet",
   "version": "0.10.0",
-  "description": "sails generate florist",
+  "description": "sails generate bouquet",
   "main": "Generator.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
-    "florist",
+    "bouquet",
     "generator",
     "sails",
     "generate",
@@ -25,8 +25,8 @@
     "fs-extra": "*"
   },
   "sailsGenerator": {
-    "type": "florist",
-    "behavior": "overrides `sails generate florist`",
+    "type": "bouquet",
+    "behavior": "overrides `sails generate bouquet`",
     "sailsVersion": "~0.10.0"
   }
 }

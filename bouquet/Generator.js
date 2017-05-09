@@ -10,12 +10,12 @@ _.defaults = require('merge-defaults');
 
 
 /**
- * sails-generate-florist
+ * sails-generate-bouquet
  *
  * Usage:
- * `sails generate florist`
+ * `sails generate bouquet`
  *
- * @description Generates a florist
+ * @description Generates a bouquet
  * @help See http://links.sailsjs.org/docs/generators
  */
 
@@ -37,7 +37,7 @@ module.exports = {
     // scope.args are the raw command line arguments.
     //
     // e.g. if someone runs:
-    // $ sails generate florist user find create update
+    // $ sails generate bouquet user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     // Make sure we're in the root of a Sails project.
     var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
@@ -112,6 +112,7 @@ module.exports = {
     './test/bin': { folder: {} },
     './test/Systems': { folder: {} },
     './design/README.md': { template: 'design/README.md' },
+    './design/Architecture.puml': { template: 'design/Architecture.puml' },
     './design/Systems/README.md': { template: 'design/Systems/README.md' },
     './design/UseCases/README.md': { template: 'design/UseCases/README.md' },
     './design/Actors/README.md': { template: 'design/Actors/README.md' }
@@ -147,9 +148,9 @@ module.exports = {
 
 function INVALID_SCOPE_VARIABLE (varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "florist":\n'+
+  'Issue encountered in generator "bouquet":\n'+
   'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-florist`, please resolve this '+
+  'If you are the author of `sails-generate-bouquet`, please resolve this '+
   'issue and publish a new patch release.';
 
   message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');

@@ -11,12 +11,12 @@ _.defaults = require('merge-defaults');
 
 
 /**
- * sails-generate-florist-actor
+ * sails-generate-bouquet-actor
  *
  * Usage:
- * `sails generate florist-Actor`
+ * `sails generate bouquet-Actor`
  *
- * @description Generates a florist-Actor
+ * @description Generates a bouquet-Actor
  * @help See http://links.sailsjs.org/docs/generators
  */
 
@@ -38,10 +38,10 @@ module.exports = {
     // scope.args are the raw command line arguments.
     //
     // e.g. if someone runs:
-    // $ sails generate florist-Actor user find create update
+    // $ sails generate bouquet-Actor user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     if (!scope.args[0] && !scope.args[1]) {
-      return cb(new Error('Please provide args for florist-Actor <Name> <nickname>.'));
+      return cb(new Error('Please provide args for bouquet-Actor <name> <nickname>.'));
     }
     // Make sure we're in the root of a Sails project.
     var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
@@ -74,10 +74,14 @@ module.exports = {
     });
 
     // Decide the output filename for use in targets below:
-    scope.projectName = package.name
+    scope.usecases = [];
+    scope.projectName = package.name;
     scope.name = scope.args[0];
     scope.nickname = scope.args[1];
     scope.testName = scope.args[0] + ".test.js";
+    scope.binName = scope.projectName + "-" + scope.nickname;
+    scope.controllerName = scope.nickname[0].toUpperCase() + scope.nickname.substring(1) + "Controller";
+    scope.controllerFileName = scope.controllerName + ".js";
 
     // When finished, we trigger a callback with no error
     // to begin generating files/folders as specified by
@@ -102,16 +106,14 @@ module.exports = {
     // The `template` helper reads the specified template, making the
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
-    './design': {folder: {}},
-    './design': {folder: {}},
-    './design/Actors': {folder: {}},
     './design/Actors/:name': {folder: {}},
     './design/Actors/:name/Activity.puml': {template: 'Activity.puml'},
     './design/Actors/:name/README.md': {template: 'README.md'},
     './design/Actors/:name/UseCases.puml': {template: 'UseCases.puml'},
     './design/Actors/:name/Workflow.puml': {template: 'Workflow.puml'},
-    './test/Actors': {folder: {}},
-    './test/Actors/:testName': {template: 'actor.test.js'},
+    './api/controllers/:controllerFileName': {template: 'ActorController.js'},
+    './bin/:binName': {template: 'binCommand'},
+    './test/Actors/:testName': {template: 'actor.test.js'}
   },
 
 
@@ -141,9 +143,9 @@ module.exports = {
 
 function INVALID_SCOPE_VARIABLE(varname, details, message) {
   var DEFAULT_MESSAGE =
-    'Issue encountered in generator "florist-Actor":\n' +
+    'Issue encountered in generator "bouquet-Actor":\n' +
     'Missing required scope variable: `%s`"\n' +
-    'If you are the author of `sails-generate-florist-actor`, please resolve this ' +
+    'If you are the author of `sails-generate-bouquet-actor`, please resolve this ' +
     'issue and publish a new patch release.';
 
   message = (message || DEFAULT_MESSAGE) + (details ? '\n' + details : '');
