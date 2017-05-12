@@ -132,7 +132,7 @@ There should be one system command that contains all of the commands for the sys
 The following is an example of this top level command file
 
 In this case "caade"
-```json
+```javascript
 #!/usr/bin/env node
 
 var program = require('commander');
@@ -168,7 +168,7 @@ The file is named "projectName-actorName" a simple example follows.
 
 In this case "caade-app"
 
-```json
+```javascript
 #!/usr/bin/env node
 
 var program = require('commander');
@@ -186,7 +186,7 @@ program
 
 The Controller for this might look something like this AppController.js
 
-```json
+```javascript
 
 module.exports = {
 
@@ -212,76 +212,13 @@ module.exports = {
         res.json({application: app});
       });
   },
-  get: function (req, res) {
-  ...
-  },
-  delete: function (req, res) {
-  ...
-  },
-
-  list: function (req, res) {
-  ...
-  },
-
-  show: function (req, res) {
-  ...
-  },
-  ps: function (req, res) {
-  ...
-  },
-  /**
-   * `ApplicationController.up()`
-   */
-  up: function (req, res) {
-  ...
-  },
-  /**
-   * Kill the services in the application
-   * @param req
-   * @param res
-   * @returns {*}
-   */
-  kill: function (req, res) {
-    var env = [];
-    var services = [];
-    var signal = "";
-    if (!req.query.app) {
-      res.json({error: "Application has not be defined!"});
-    }
-    if (req.query.env) {
-      env = req.query.env.split(/,/);
-    }
-    else {
-      env.push("Local");
-    }
-    if (req.query.services) {
-      services = req.query.services.split(/,/);
-    }
-    if (!req.query.signal) {
-      signal = "9";
-    }
-    return Application.find({name: req.query.app})
-      .then(function (apps) {
-        if (apps.length > 0) {
-          return Environment.find({name: env})
-            .then(function (envs) {
-              if (apps.length > 0) {
-                // Actually call up on the application here.
-                return apps[0].kill(envs, services, signal)
-                  .then(function (appInstances) {
-                    return res.json({message: "Application Running", instances: appInstances});
-                  })
-              }
-              else {
-                return res.json({error: "Environment could not be found!" + env});
-              }
-            })
-        }
-        else {
-          return res.json({error: "Application " + req.query.app + " not found!"});
-        }
-      });
-  },
+  get: function (req, res) { ... },
+  delete: function (req, res) { ... },
+  list: function (req, res) { ... },
+  show: function (req, res) { ... },
+  ps: function (req, res) { ... },
+  up: function (req, res) { ... },
+  kill: function (req, res) { ... }
 };
 
 ```
@@ -292,7 +229,7 @@ The file is named "projectName-subsystemName" a simple example follows.
 
 In this case "caade-cloud"
 
-```json
+```javascript
 #!/usr/bin/env node
 
 var program = require('commander');
@@ -318,7 +255,7 @@ be a cooresponding controller for the actor. This way the REST and CLI APIs are 
 The following is an example of a simple Command Script that accesses the rest interface.
 In this case it shows information about a stack in the system
 
-```json
+```javascript
 #!/usr/bin/env node
 
 var program = require('commander');
@@ -362,7 +299,7 @@ Another thing that I found useful was having the ability to include the ability 
 user to add a file as an argument to the CLI. This is good for passing in yaml or json files
 that can be passed into the Controller.
 In this case I am passing in a yaml file.
-```json
+```javascript
 #!/usr/bin/env node
 
 var program = require('commander');
