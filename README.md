@@ -111,6 +111,17 @@ There are several different kinds of binary files that are used in the bouquet p
 1. Subsystem Command Script - "projectName-subsystemName"
 1. Command Script - "projectName-actorName-command", "projectName-subsystemName-command", or "projectName-command"
 
+The goal here is that we have a consistent command line interface. 
+For example in the project named caade the following are some commands
+
+```
+
+# caade init // High level scenario
+# caade stack up // Subsystem Command
+# caade dev ps // Actor Command
+
+```
+
 #### Top Level Command Script
 There should be one system command that contains all of the commands for the system using the commander package.
 
@@ -170,6 +181,108 @@ program
   .command('remove <application name>', 'Remove my application')
   .command('show <application name>', 'show details about my application')
   .parse(process.argv);
+
+```
+
+The Controller for this might look something like this AppController.js
+
+```json
+
+module.exports = {
+
+  create: function (req, res) {
+    var name = "";  // Default
+    var stackName = "";  // Default
+    if (req.query.name) {
+      name = req.query.name;
+    }
+    else {
+      // Return Error "No Application Name specified"
+      return res.json({error: "No Application Name specified!"})
+    }
+    if (req.query.stack) {
+      stackName = req.query.stack;
+    }
+    else {
+      // Return error with "No Application Stack specified"
+      return res.json({error: "No Application Stack specified!"})
+    }
+    return Application.find({name: name})
+      .then(function (app) {
+        res.json({application: app});
+      });
+  },
+  get: function (req, res) {
+  ...
+  },
+  delete: function (req, res) {
+  ...
+  },
+
+  list: function (req, res) {
+  ...
+  },
+
+  show: function (req, res) {
+  ...
+  },
+  ps: function (req, res) {
+  ...
+  },
+  /**
+   * `ApplicationController.up()`
+   */
+  up: function (req, res) {
+  ...
+  },
+  /**
+   * Kill the services in the application
+   * @param req
+   * @param res
+   * @returns {*}
+   */
+  kill: function (req, res) {
+    var env = [];
+    var services = [];
+    var signal = "";
+    if (!req.query.app) {
+      res.json({error: "Application has not be defined!"});
+    }
+    if (req.query.env) {
+      env = req.query.env.split(/,/);
+    }
+    else {
+      env.push("Local");
+    }
+    if (req.query.services) {
+      services = req.query.services.split(/,/);
+    }
+    if (!req.query.signal) {
+      signal = "9";
+    }
+    return Application.find({name: req.query.app})
+      .then(function (apps) {
+        if (apps.length > 0) {
+          return Environment.find({name: env})
+            .then(function (envs) {
+              if (apps.length > 0) {
+                // Actually call up on the application here.
+                return apps[0].kill(envs, services, signal)
+                  .then(function (appInstances) {
+                    return res.json({message: "Application Running", instances: appInstances});
+                  })
+              }
+              else {
+                return res.json({error: "Environment could not be found!" + env});
+              }
+            })
+        }
+        else {
+          return res.json({error: "Application " + req.query.app + " not found!"});
+        }
+      });
+  },
+};
 
 ```
 
@@ -243,6 +356,56 @@ client.get(url, function (data, response) {
   }
 });
 
+```
+
+Another thing that I found useful was having the ability to include the ability to allow the
+user to add a file as an argument to the CLI. This is good for passing in yaml or json files
+that can be passed into the Controller.
+In this case I am passing in a yaml file.
+```json
+#!/usr/bin/env node
+
+var program = require('commander');
+var Client = require('node-rest-client').Client; // Access the REST interface
+var config = require('./caade-config');
+var YAML = require('yamljs'); // Parse a YAML file
+
+var client = new Client();
+
+program
+  .option('-f, --filename <filename>', 'Create an application stack from file')
+  .option('-e, --env <environmentName>', 'Create an application stack for the environment')
+  .parse(process.argv);
+
+var name = program.args;
+
+var url = config.caadeUrl + "/stack/create";
+// Taking a YAMLfile and converting to JSON and then passing it into the REST interface.
+var args = { headers: {"Content-Type": "application/json"}, data: {} }
+
+if(name) {
+  args.data.name = name[0];
+}
+
+var definition = {};
+// Load the YAML file from the local drive and convert it to JSON.
+if (program.filename) {
+  args.data.definition = YAML.load(program.filename);
+}
+
+if (program.env) {
+  args.data.env = program.env;
+}
+
+client.post(url, args, function (data, response) {
+  // parsed response body as js object
+  if(data.error) {
+    console.error(data.error);
+  }
+  else {
+    console.log("Stack " + data.stack.name + " has been created for environment " + program.env);
+  }
+});
 ```
 
 
