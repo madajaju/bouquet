@@ -18,7 +18,7 @@ $ npm install sails-generate-bouquet-scenario
 ##### On the command line
 
 ```sh
-$ sails generate bouquet-Scenario 
+$ sails generate bouquet-Scenario <UseCaseName> <Scenario>
 ```
 
 

@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "sails generate bouquet",
   "main": "Generator.js",
   "scripts": {
@@ -27,6 +27,6 @@
   "sailsGenerator": {
     "type": "bouquet",
     "behavior": "overrides `sails generate bouquet`",
-    "sailsVersion": "~0.10.0"
+    "sailsVersion": "~0.11.0"
   }
 }

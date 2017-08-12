@@ -18,7 +18,7 @@ $ npm install sails-generate-bouquet-usecase
 ##### On the command line
 
 ```sh
-$ sails generate bouquet-UseCase 
+$ sails generate bouquet-UseCase <name>
 ```
 
 

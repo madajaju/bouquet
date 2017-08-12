@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-subsystem",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "sails generate bouquet-SubSystem",
   "main": "Generator.js",
   "scripts": {
@@ -27,6 +27,6 @@
   "sailsGenerator": {
     "type": "bouquet-SubSystem",
     "behavior": "overrides `sails generate bouquet-SubSystem`",
-    "sailsVersion": "~0.10.0"
+    "sailsVersion": "~0.11.0"
   }
 }

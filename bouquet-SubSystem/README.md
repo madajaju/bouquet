@@ -18,7 +18,7 @@ $ npm install sails-generate-bouquet-subsystem
 ##### On the command line
 
 ```sh
-$ sails generate bouquet-SubSystem 
+$ sails generate bouquet-SubSystem <name>
 ```
 
 
