@@ -1,0 +1,19 @@
+@startuml
+
+skinparam packageStyle rect
+
+package <%= projectName %> {
+package "SubSystem1" #aaffff {
+}
+package "SubSystem2" #aaffaa {
+}
+package "SubSystem3" #ffaaaa {
+}
+}
+
+SubSystem1 --> SubSystem2
+SubSystem2 --> SubSystem3
+
+
+@enduml
+

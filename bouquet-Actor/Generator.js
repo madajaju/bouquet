@@ -79,6 +79,7 @@ module.exports = {
     scope.name = scope.args[0];
     scope.nickname = scope.args[1];
     scope.testName = scope.args[0] + ".test.js";
+    scope.readme = "Actor-" + scope.args[0] + ".md";
     scope.binName = scope.projectName + "-" + scope.nickname;
     scope.controllerName = scope.nickname[0].toUpperCase() + scope.nickname.substring(1) + "Controller";
     scope.controllerFileName = scope.controllerName + ".js";
@@ -108,7 +109,7 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     './design/Actors/:name': {folder: {}},
     './design/Actors/:name/Activity.puml': {template: 'Activity.puml'},
-    './design/Actors/:name/README.md': {template: 'README.md'},
+    './design/Actors/:name/:readme': {template: 'README.md'},
     './design/Actors/:name/UseCases.puml': {template: 'UseCases.puml'},
     './design/Actors/:name/Workflow.puml': {template: 'Workflow.puml'},
     './api/controllers/:controllerFileName': {template: 'ActorController.js'},

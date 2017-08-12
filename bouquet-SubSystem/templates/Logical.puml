@@ -1,0 +1,13 @@
+@startuml
+
+package "<%= name %>" {
+  interface "<%= name %>" {
+  }
+}
+
+CLI ()-- "<%= name %>"
+"REST API" ()-- "<%= name %>"
+"Web Portal" ()-- "<%= name %>"
+
+
+@enduml

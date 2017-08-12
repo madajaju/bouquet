@@ -5,19 +5,19 @@ _Description_
 
 * _UseCases_
 
-![Image](UseCases.png)
+![Image](./Actors/<%= name %>/UseCases.png)
 
 ## Activities
 
 _description_
 
-![Image](Activity.png)
+![Image](./Actors/<%= name %>/Activity.png)
 
 ## Workflow
 
 _description_
 
-![Image](Workflow.png)
+![Image](./Actors/<%= name %>/Workflow.png)
 
 ## User Interface
 

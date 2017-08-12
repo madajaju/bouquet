@@ -4,7 +4,9 @@
 
 var util = require('util');
 var _ = require('lodash');
+var path = require('path');
 _.defaults = require('merge-defaults');
+var fs = require('fs');
 
 
 /**
@@ -37,6 +39,14 @@ module.exports = {
     // e.g. if someone runs:
     // $ sails generate bouquet-UseCase user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
+     var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
+    var package, invalidPackageJSON;
+    try {
+      package = require(pathToPackageJSON);
+    } catch (e) {
+      invalidPackageJSON = true;
+    }
+
     if (!scope.args[0]) {
       return cb( new Error('Please provide a name for this bouquet-UseCase.') );
     }
@@ -60,7 +70,8 @@ module.exports = {
 
     // Decide the output filename for use in targets below:
     scope.name = scope.args[0];
-    scope.systemName = "System";
+    scope.readme = "UseCase-" + scope.args[0] + ".md";
+    scope.systemName = package.name;
     scope.testName = scope.args[0] + ".test.js";
 
     // When finished, we trigger a callback with no error
@@ -89,8 +100,7 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     './test/UseCases/:testName': { template: 'usecase.test.js' },
     './design/UseCases/:name/Activities.puml': { template: 'Activities.puml' },
-    './design/UseCases/:name/README.md': { template: 'README.md' },
-    './design/UseCases/:name/ScenarioName.puml': { template: 'ScenarioName.puml' },
+    './design/UseCases/:name/:readme': { template: 'README.md' },
 
     // Creates a folder at a static path
     './test/UseCases': { folder: { force: true} },

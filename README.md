@@ -83,15 +83,18 @@ subdirectories in the design directory as shown below.
 * config - Stanard SailsJS Directory
 * **design** - Contains Architecture and Design of the system
     * Actors - Actors of the system
-        * README.md - ReadMe for all of the Actors
+        * Actors.md - ReadMe for all of the Actors
         * < Actor Name > - Directory for each Actor of the system
+          * Actor-< Actor Name >.md - Readme for the actor.
     * UseCases - Use Cases of the system
-        * README.md - ReadMe file for all of the UseCases
+        * UseCases.md - ReadMe file for all of the UseCases
         * UseCases.puml - PlantUML file for all of the Use Cases and Actors
         * < UseCase Name > - Directory for each Use Case of the system
-    * Systems - System Components
-        * README.md - ReadMe for all of the sub-systems
+          * UseCase-<UseCase Name> - Readme for the Use Case.
+    * Solution - System Components
+        * Solution.md - ReadMe for all of the sub-systems
         * < Sub System Name > - Directory for each sub system.
+          * SubSystem-< Sub System Name >.md - Description of the Sub-System
     * README.md - Top ReadMe for the Architecture and Design
     * Architecture.puml - Top level architecture plantUML diagram
     * plantuml.####.jar - plantUML jar file used to generate png files.

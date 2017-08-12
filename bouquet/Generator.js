@@ -71,6 +71,7 @@ module.exports = {
     // Decide the output filename for use in targets below:
 
     scope.name = package.name;
+    scope.projectName = package.name;
     // Add other stuff to the scope for use in our templates:
 
     // When finished, we trigger a callback with no error
@@ -105,17 +106,21 @@ module.exports = {
     './design': { folder: {} },
     './design/Actors': { folder: {} },
     './design/UseCases': { folder: {} },
-    './design/Systems': { folder: {} },
+    './design/Solution': { folder: {} },
     './test': { folder: {} },
     './test/Actors': { folder: {} },
     './test/UseCases': { folder: {} },
     './test/bin': { folder: {} },
-    './test/Systems': { folder: {} },
+    './test/Solution': { folder: {} },
     './design/README.md': { template: 'design/README.md' },
-    './design/Architecture.puml': { template: 'design/Architecture.puml' },
-    './design/Systems/README.md': { template: 'design/Systems/README.md' },
-    './design/UseCases/README.md': { template: 'design/UseCases/README.md' },
-    './design/Actors/README.md': { template: 'design/Actors/README.md' }
+    './design/Architecture.puml': { template: 'design/Logical.puml' },
+    './design/Solution/Solution.md': { template: 'design/Solution/README.md' },
+    './design/Solution/Deployment.puml': { template: 'design/Solution/Deployment.puml' },
+    './design/Solution/Logical.puml': { template: 'design/Solution/Logical.puml' },
+    './design/Solution/Physical.puml': { template: 'design/Solution/Physical.puml' },
+    './design/Solution/Process.puml': { template: 'design/Solution/Process.puml' },
+    './design/UseCases/UseCases.md': { template: 'design/UseCases/README.md' },
+    './design/Actors/Actors.md': { template: 'design/Actors/README.md' }
   },
 
 

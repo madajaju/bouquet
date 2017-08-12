@@ -2,8 +2,8 @@
 |actorName|
 start
 |#ffffaa|<%= systemName %>|
-:activity;
-|Application Developer|
-:activity;
+:activity1;
+|actor2|
+:activity2;
 stop
 @enduml

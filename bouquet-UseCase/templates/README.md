@@ -8,6 +8,8 @@ _Description_
 
 ## Activities
 
+![Image](./UseCases/<%= name %>/Activities.png)
+
 * _Activities_
 
 ## Detail Scenarios

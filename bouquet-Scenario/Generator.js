@@ -4,16 +4,17 @@
 
 var util = require('util');
 var _ = require('lodash');
+var path = require('path');
 _.defaults = require('merge-defaults');
-
+var fs = require('fs');
 
 /**
- * sails-generate-bouquet-scenario
+ * sails-generate-bouquet-usecase
  *
  * Usage:
- * `sails generate bouquet-Scenario`
+ * `sails generate bouquet-UseCase`
  *
- * @description Generates a bouquet-Scenario
+ * @description Generates a bouquet-UseCase
  * @help See http://links.sailsjs.org/docs/generators
  */
 
@@ -35,10 +36,18 @@ module.exports = {
     // scope.args are the raw command line arguments.
     //
     // e.g. if someone runs:
-    // $ sails generate bouquet-Scenario user find create update
+    // $ sails generate bouquet-UseCase user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
+    var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
+    var package, invalidPackageJSON;
+    try {
+      package = require(pathToPackageJSON);
+    } catch (e) {
+      invalidPackageJSON = true;
+    }
+
     if (!scope.args[0]) {
-      return cb( new Error('Please provide a name for this bouquet-Scenario.') );
+      return cb( new Error('Please provide a name for this bouquet-UseCase.') );
     }
 
     // scope.rootPath is the base path for this generator
@@ -59,10 +68,11 @@ module.exports = {
     });
 
     // Decide the output filename for use in targets below:
-    scope.filename = scope.args[0];
-
-    // Add other stuff to the scope for use in our templates:
-    scope.whatIsThis = 'an example file created at '+scope.createdAt;
+    scope.name = scope.args[1];
+    scope.readme = "Scenario-" + scope.args[1] + ".md";
+    scope.usecase = scope.args[0];
+    scope.systemName = package.name;
+    scope.diagramName = scope.args[1] + ".puml";
 
     // When finished, we trigger a callback with no error
     // to begin generating files/folders as specified by
@@ -88,10 +98,13 @@ module.exports = {
     // The `template` helper reads the specified template, making the
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
-    './:filename': { template: 'example.template.js' },
+    // './test/UseCases/:testName': { template: 'usecase.test.js' },
+    './design/UseCases/:usecase/:diagramName': { template: 'ScenarioName.puml' },
+    './design/UseCases/:usecase/:readme': { template: 'README.md' },
 
     // Creates a folder at a static path
-    './hey_look_a_folder': { folder: {} }
+    // './test/UseCases': { folder: { force: true} },
+    // './design/UseCases/:name': { folder: { force: true} }
 
   },
 
@@ -125,9 +138,9 @@ module.exports = {
 
 function INVALID_SCOPE_VARIABLE (varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "bouquet-Scenario":\n'+
+  'Issue encountered in generator "bouquet-UseCase":\n'+
   'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-bouquet-scenario`, please resolve this '+
+  'If you are the author of `sails-generate-bouquet-usecase`, please resolve this '+
   'issue and publish a new patch release.';
 
   message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');
@@ -135,3 +148,4 @@ function INVALID_SCOPE_VARIABLE (varname, details, message) {
 
   return new Error(message);
 }
+

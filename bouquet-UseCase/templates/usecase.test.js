@@ -1,9 +1,9 @@
 var Promise = require('bluebird');
 
-describe('Actor <%= name %>', function () {
-  describe('Primary UseCase', function () {
-    it('Primary Scenario', function (done) {
-                done();
+describe('Use Case <%= name %>', function () {
+  describe('Primary Scenario', function () {
+    it('Test Scenario 1', function (done) {
+       done();
     });
   });
 });
