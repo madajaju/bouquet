@@ -12,7 +12,7 @@
 
 ### Users 
 
-* [User](User.md)
+* [User](User)
 
 ![Image](./Solution/<%= name %>/UserInteraction.png)
 

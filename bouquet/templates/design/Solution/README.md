@@ -2,7 +2,7 @@
 
 _Description_
 
-## [Users](Actors.md)
+## [Users](Actors)
 
  * _Actor_
 

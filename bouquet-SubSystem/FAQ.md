@@ -39,7 +39,7 @@ Generators are mainly about creating files.  There are built-in helpers for:
 
 ### How do I get involved?
 
-+ [Contributing to this module](./CONTRIBUTING.md)
++ [Contributing to this module](./CONTRIBUTING)
 + If you find a bug with this module, please submit an issue to the tracker in this repository.  Better yet, send a pull request :)
 
 
@@ -78,4 +78,4 @@ If you feel that yours is the better approach, and should be the default, share 
 
 
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails-generate-bouquet-subsystem/FAQ.md)
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails-generate-bouquet-subsystem/FAQ)

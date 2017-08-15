@@ -112,7 +112,7 @@ module.exports = {
     './test/UseCases': { folder: {} },
     './test/bin': { folder: {} },
     './test/Solution': { folder: {} },
-    './design/README.md': { template: 'design/README.md' },
+    './design/Home.md': { template: 'design/README.md' },
     './design/Architecture.puml': { template: 'design/Logical.puml' },
     './design/Solution/Solution.md': { template: 'design/Solution/README.md' },
     './design/Solution/Deployment.puml': { template: 'design/Solution/Deployment.puml' },
