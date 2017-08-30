@@ -9,13 +9,16 @@
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0"
   },
   "keywords": [
+    "micro-service",
+    "bouquet",
     "bouquet-uservice",
     "generator",
     "sails",
     "generate",
     "plugin"
   ],
-  "author": "a node.js/sails user",
+  "author": "Darren Pulsipher",
+  "email": "darren@pulsipher.org",
   "license": "MIT",
   "dependencies": {
     "lodash": "3.10.1"
@@ -23,7 +26,7 @@
   "devDependencies": {
     "eslint": "3.5.0"
   },
-  "repository": {"type":"git","url":"git://github.com//sails-generate-bouquet-uservice.git"},
+  "repository": {"type":"git","url":"https://github.com/madajaju/bouquet/tree/master/sails-generate-bouquet-uservice"},
   "sailsGenerator": {
     "type": "bouquet-uservice",
     "behavior": "Implements or overrides `sails generate bouquet-uservice`",
