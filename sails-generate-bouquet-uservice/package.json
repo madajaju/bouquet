@@ -1,0 +1,32 @@
+{
+  "name": "sails-generate-bouquet-uservice",
+  "version": "1.0.0",
+  "description": "sails generate bouquet-uservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No further automated tests have been implemented for this generator yet.'",
+    "pretest": "npm run lint",
+    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0"
+  },
+  "keywords": [
+    "bouquet-uservice",
+    "generator",
+    "sails",
+    "generate",
+    "plugin"
+  ],
+  "author": "a node.js/sails user",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "eslint": "3.5.0"
+  },
+  "repository": {"type":"git","url":"git://github.com//sails-generate-bouquet-uservice.git"},
+  "sailsGenerator": {
+    "type": "bouquet-uservice",
+    "behavior": "Implements or overrides `sails generate bouquet-uservice`",
+    "sailsVersion": "^1.0.0"
+  }
+}
