@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-tests",
-  "version": "0.12.0",
+  "version": "0.14.0",
   "description": "sails generate bouquet-Tests",
   "main": "Generator.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "generate",
     "plugin"
   ],
-  "author": "Darren Pulsipher",
+  "author": "madajaju",
   "license": "MIT",
   "dependencies": {
   	"lodash": ">=2.4.x",
