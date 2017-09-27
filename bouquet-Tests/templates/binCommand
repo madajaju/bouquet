@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var YAML = require('yamljs');
+
+var program = require('commander');
+var Client = require('node-rest-client').Client;
+var config = require('./caade-config');
+var _ = require('lodash');
+
+var client = new Client();
+
+
+program
+  .option('-s, --stack <stackName>', 'Create an application from an Application Stack')
+  .parse(process.argv);
+
+var name = program.args;
+
+var url = config.caadeUrl + "/application/create?";
+
+if (name) {
+  url += "name=" + name[0];
+}
+if (program.stack) {
+  url += "&stack=" + program.stack;
+}
+client.get(url, function (data, response) {
+  // parsed response body as js object
+  if (data.error) {
+    console.error("Error:" + data.error);
+  }
+  else {
+    var yamlString = YAML.stringify(data.application, 4);
+
+    fs.writeFile("./caade.yml", yamlString, function (err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log("Application " + name + " was created");
+    });
+    _.each(data.stacklets.environments, function(stacklet,name) {
+      console.log(stacklet);
+      yamlString = YAML.stringify(stacklet, 4);
+      fs.writeFile("./" + name + ".yml", yamlString, function(err) {
+        if(err) {
+          return console.log(err);
+        }
+      });
+
+    })
+  }
+});

@@ -1,0 +1,32 @@
+{
+  "name": "sails-generate-bouquet-usecase",
+  "version": "0.12.0",
+  "description": "sails generate bouquet-UseCase",
+  "main": "Generator.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "bouquet-UseCase",
+    "generator",
+    "sails",
+    "generate",
+    "plugin"
+  ],
+  "author": "balderdashy",
+  "license": "MIT",
+  "dependencies": {
+  	"lodash": ">=2.4.x",
+  	"merge-defaults": ">=0.1.0"
+  },
+  "devDependencies": {
+    "sails-generate": "*",
+    "reportback": "*",
+    "fs-extra": "*"
+  },
+  "sailsGenerator": {
+    "type": "bouquet-UseCase",
+    "behavior": "overrides `sails generate bouquet-UseCase`",
+    "sailsVersion": "~0.11.0"
+  }
+}
