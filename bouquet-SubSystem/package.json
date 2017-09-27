@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-subsystem",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "sails generate bouquet-SubSystem",
   "main": "Generator.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "generate",
     "plugin"
   ],
-  "author": "balderdashy",
+  "author": "madajaju",
   "license": "MIT",
   "dependencies": {
   	"lodash": ">=2.4.x",

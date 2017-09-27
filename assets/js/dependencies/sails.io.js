@@ -1,11 +1,11 @@
 /**
  * To use sails.io.js in an AMD environment (e.g. with require.js),
  * replace this file with the sails.io.js file from the root of:
- * https://github.com/balderdashy/sails.io.js
+ * https://github.com/madajaju/sails.io.js
  * and download a standalone copy of socket.io-client from:
  * https://github.com/socketio/socket.io-client
  * then follow the instructions at:
- * https://github.com/balderdashy/sails.io.js#requirejsamd-usage
+ * https://github.com/madajaju/sails.io.js#requirejsamd-usage
  */
 
 // socket.io-client version 1.4.4
@@ -376,7 +376,7 @@ message:4,upgrade:5,noop:6},s=i(r),t={type:"error",data:"parser error"},u=a("blo
     if (!io) {
       // If node:
       if (SDK_INFO.platform === 'node') {
-        throw new Error('No socket.io client available.  When requiring `sails.io.js` from Node.js, a socket.io client (`io`) must be passed in; e.g.:\n```\nvar io = require(\'sails.io.js\')( require(\'socket.io-client\') )\n```\n(see https://github.com/balderdashy/sails.io.js/tree/master/test for more examples)');
+        throw new Error('No socket.io client available.  When requiring `sails.io.js` from Node.js, a socket.io client (`io`) must be passed in; e.g.:\n```\nvar io = require(\'sails.io.js\')( require(\'socket.io-client\') )\n```\n(see https://github.com/madajaju/sails.io.js/tree/master/test for more examples)');
       }
       // Otherwise, this is a web browser:
       else {
@@ -467,7 +467,7 @@ message:4,upgrade:5,noop:6},s=i(r),t={type:"error",data:"parser error"},u=a("blo
         // Double-check that `queue[i]` will not
         // inadvertently discover extra properties attached to the Object
         // and/or Array prototype by other libraries/frameworks/tools.
-        // (e.g. Ember does this. See https://github.com/balderdashy/sails.io.js/pull/5)
+        // (e.g. Ember does this. See https://github.com/madajaju/sails.io.js/pull/5)
         var isSafeToDereference = ({}).hasOwnProperty.call(queue, i);
         if (isSafeToDereference) {
           // Get the arguments that were originally made to the "request" method
@@ -503,7 +503,7 @@ message:4,upgrade:5,noop:6},s=i(r),t={type:"error",data:"parser error"},u=a("blo
       window._sailsIoJSConnect = function(response) {
         // In rare circumstances our script may have been vaporised.
         // Remove it, but only if it still exists
-        // https://github.com/balderdashy/sails.io.js/issues/92
+        // https://github.com/madajaju/sails.io.js/issues/92
         if (scriptEl && scriptEl.parentNode) {
             scriptEl.parentNode.removeChild(scriptEl);
         }

@@ -85,7 +85,7 @@ module.exports.connections = {
 
   /***************************************************************************
   *                                                                          *
-  * More adapters: https://github.com/balderdashy/sails                      *
+  * More adapters: https://github.com/madajaju/sails                      *
   *                                                                          *
   ***************************************************************************/
 

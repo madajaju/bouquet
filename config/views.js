@@ -26,7 +26,7 @@ module.exports.views = {
   * toffee, walrus, & whiskers                                                *
   *                                                                           *
   * For more options, check out the docs:                                     *
-  * https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md#engine *
+  * https://github.com/madajaju/sails-wiki/blob/0.9/config.views.md#engine *
   *                                                                           *
   ****************************************************************************/
 

@@ -26,7 +26,10 @@
   "devDependencies": {
     "eslint": "3.5.0"
   },
-  "repository": {"type":"git","url":"https://github.com/madajaju/bouquet/tree/master/sails-generate-bouquet-uservice"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madajaju/bouquet/tree/master/sails-generate-bouquet-uservice"
+  },
   "sailsGenerator": {
     "type": "bouquet-uservice",
     "behavior": "Implements or overrides `sails generate bouquet-uservice`",

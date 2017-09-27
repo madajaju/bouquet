@@ -8,7 +8,7 @@
  * for matching multiple files, and ! in front of an expression to ignore files.)
  *
  * For more information see:
- *   https://github.com/balderdashy/sails-docs/blob/master/anatomy/myApp/tasks/pipeline.js.md
+ *   https://github.com/madajaju/sails-docs/blob/master/anatomy/myApp/tasks/pipeline.js.md
  */
 
 

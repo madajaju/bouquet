@@ -103,7 +103,7 @@ module.exports = {
     // Creates a folder at a static path
     './bin': { folder: {} },
     './bin/:name': { template: 'bin/systemName' },
-    './design': { folder: {} },
+    // './design': { folder: {} },
     './design/Actors': { folder: {} },
     './design/UseCases': { folder: {} },
     './design/Solution': { folder: {} },

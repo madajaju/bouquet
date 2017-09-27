@@ -26,6 +26,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
+    "build": "node ./deploy/build",
     "start": "node app.js"
   },
   "main": "app.js",

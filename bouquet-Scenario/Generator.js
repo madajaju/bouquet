@@ -47,7 +47,7 @@ module.exports = {
     }
 
     if (!scope.args[0]) {
-      return cb( new Error('Please provide a name for this bouquet-UseCase.') );
+      return cb( new Error('Please provide a UseCase and Scenario name for this bouquet-Scenario <UseCase> <Scenario>.') );
     }
 
     // scope.rootPath is the base path for this generator

@@ -1,7 +1,7 @@
 {
-  "name": "sails-generate-bouquet-usecase",
+  "name": "sails-generate-bouquet-tests",
   "version": "0.12.0",
-  "description": "sails generate bouquet-UseCase",
+  "description": "sails generate bouquet-Tests",
   "main": "Generator.js",
   "scripts": {
     "test": "mocha"
@@ -13,7 +13,7 @@
     "generate",
     "plugin"
   ],
-  "author": "balderdashy",
+  "author": "Darren Pulsipher",
   "license": "MIT",
   "dependencies": {
   	"lodash": ">=2.4.x",
@@ -25,8 +25,8 @@
     "fs-extra": "*"
   },
   "sailsGenerator": {
-    "type": "bouquet-UseCase",
-    "behavior": "overrides `sails generate bouquet-UseCase`",
+    "type": "bouquet-Tests",
+    "behavior": "overrides `sails generate bouquet-Tests`",
     "sailsVersion": "~0.11.0"
   }
 }

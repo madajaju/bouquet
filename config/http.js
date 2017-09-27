@@ -64,7 +64,7 @@ module.exports.http = {
   *                                                                          *
   * The body parser that will handle incoming multipart HTTP requests. By    *
   * default as of v0.10, Sails uses                                          *
-  * [skipper](http://github.com/balderdashy/skipper). See                    *
+  * [skipper](http://github.com/madajaju/skipper). See                    *
   * http://www.senchalabs.org/connect/multipart.html for other options.      *
   *                                                                          *
   * Note that Sails uses an internal instance of Skipper by default; to      *
