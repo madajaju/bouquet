@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-usecase",
-  "version": "0.14.0",
+  "version": "1.0.1",
   "description": "sails generate bouquet-UseCase",
   "main": "Generator.js",
   "scripts": {
