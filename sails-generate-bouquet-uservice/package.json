@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-uservice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "sails generate bouquet-uservice",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "generate",
     "plugin"
   ],
-  "author": "Darren Pulsipher",
+  "author": "madajaju",
   "email": "darren@pulsipher.org",
   "license": "MIT",
   "dependencies": {

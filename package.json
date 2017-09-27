@@ -1,7 +1,7 @@
 {
   "name": "bouquet",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.14.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -32,7 +32,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/bouquet.git"
+    "url": "git://github.com/madajaju/bouquet.git"
   },
   "author": "anonymous node/sails user",
   "license": ""
