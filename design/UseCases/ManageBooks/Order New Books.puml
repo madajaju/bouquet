@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "ManageBooks" #lightblue
-participant "bouquet" as S
-A -> S : Order New Books
-end box
-
-@enduml

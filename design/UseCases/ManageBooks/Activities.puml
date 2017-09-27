@@ -1,9 +1,0 @@
-@startuml
-|actorName|
-start
-|#ffffaa|bouquet|
-:activity1;
-|actor2|
-:activity2;
-stop
-@enduml
