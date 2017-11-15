@@ -77,8 +77,9 @@ module.exports = {
     scope.usecases = [];
     scope.projectName = package.name;
     scope.name = scope.args[0];
+    scope.name = scope.name.replace(/\s/g, "-");
     scope.nickname = scope.args[1];
-    scope.testName = scope.args[0] + ".test.js";
+    scope.testName = scope.name + ".test.js";
     scope.readme = "Actor-" + scope.args[0] + ".md";
     scope.binName = scope.projectName + "-" + scope.nickname;
     scope.controllerName = scope.nickname[0].toUpperCase() + scope.nickname.substring(1) + "Controller";
@@ -116,7 +117,6 @@ module.exports = {
     './bin/:binName': {template: 'binCommand'},
     './test/Actors/:testName': {template: 'actor.test.js'}
   },
-
 
   /**
    * The absolute path to the `templates` for this generator

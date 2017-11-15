@@ -32,7 +32,7 @@ module.exports = {
 
   before: function (scope, done) {
     if (!scope.args[0]) {
-      return done(new Error('Please provide a name for this bouquet-SubSystem.'));
+      return done(new Error('Please provide a name for this bouquet-uservice.'));
     }
     // Make sure we're in the root of a Sails project.
     var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
@@ -58,6 +58,7 @@ module.exports = {
 
     // Decide the output filename for use in targets below:
     scope.name = scope.args[0].toLowerCase();
+    scope.name = scope.name.replace(/\s/g, "-");
     scope.projectName = package.name.toLowerCase();
 
     return done();
@@ -69,9 +70,9 @@ module.exports = {
    * @type {Dictionary}
    */
   targets: {
-    './deploy/docker-composer-dev.yaml': {template: 'docker-compose-dev.yaml'},
-    './deploy/docker-composer-test.yaml': {template: 'docker-compose-test.yaml'},
-    './deploy/docker-composer-prod.yaml': {template: 'docker-compose-prod.yaml'},
+    './deploy/docker-compose-dev.yaml': {template: 'docker-compose-dev.yaml'},
+    './deploy/docker-compose-test.yaml': {template: 'docker-compose-test.yaml'},
+    './deploy/docker-compose-prod.yaml': {template: 'docker-compose-prod.yaml'},
     './deploy/uservices/web/Dockerfile': {template: 'uservices/web/Dockerfile'},
     './deploy/uservices/web/package.json': {template: 'uservices/web/package.json'},
     './deploy/build.js': {copy: 'build.js'},

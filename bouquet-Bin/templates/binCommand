@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var YAML = require('yamljs');
+
+var program = require('commander');
+var Client = require('node-rest-client').Client;
+var config = require('./config.js');
+var _ = require('lodash');
+
+var client = new Client();
+
+program
+  // .option('-s, --stack <stackName>', 'Create an application from an Application Stack')
+  .parse(process.argv);
+
+var name = program.args;
+
+var url = config.Url + "/<%= name %>/<%= command %>?";
+
+
+/* Get the arguments passed on the command line and put them in a URL.
+if (name) {
+  url += "name=" + name[0];
+}
+if (program.stack) {
+  url += "&stack=" + program.stack;
+}
+*/
+
+client.get(url, function (data, response) {
+  // parsed response body as js object
+  if (data.error) {
+    console.error("Error:" + data.error);
+  }
+  else {
+  // Process the data returned.
+  }
+});

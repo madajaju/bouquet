@@ -40,7 +40,7 @@ module.exports = {
     // $ sails generate bouquet-SubSystem user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     if (!scope.args[0]) {
-      return cb( new Error('Please provide a name for this bouquet-SubSystem.') );
+      return cb(new Error('Please provide a name for this bouquet-SubSystem.'));
     }
     // Make sure we're in the root of a Sails project.
     var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
@@ -63,7 +63,7 @@ module.exports = {
     // And someone ran this generator from `/Users/dbowie/sailsStuff`,
     // then `/Users/dbowie/sailsStuff/Foobar.md` would be created.
     if (!scope.rootPath) {
-      return cb( INVALID_SCOPE_VARIABLE('rootPath') );
+      return cb(INVALID_SCOPE_VARIABLE('rootPath'));
     }
 
 
@@ -73,9 +73,22 @@ module.exports = {
     });
 
     // Decide the output filename for use in targets below:
-    scope.name = scope.args[0];
+    scope.myRoot = "";
+    var i = 0;
+    while (scope.args[i + 1]) {
+      var path1 = scope.args[i];
+      path1 = path1.replace(/\s/g, "-");
+      scope.myRoot += path1 + "/";
+      i++;
+    }
+    scope.name = scope.args[i];
+    scope.name = scope.name.replace(/\s/g, "-");
+    scope.testName = scope.name + ".test.js";
     scope.projectName = package.name;
-    scope.readme = "SubSystem-" + scope.args[0] + ".md";
+    scope.readme = "SubSystem-" + scope.name + ".md";
+    scope.name = scope.myRoot + scope.name;
+    scope.testName = scope.myRoot + scope.testName;
+    console.log("Creating " + scope.name);
 
     // Add other stuff to the scope for use in our templates:
 
@@ -84,7 +97,6 @@ module.exports = {
     // the `targets` below.
     cb();
   },
-
 
 
   /**
@@ -103,16 +115,17 @@ module.exports = {
     // The `template` helper reads the specified template, making the
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Creates a folder at a static path
-    './design/Solution/:name': { folder: {} },
+    './design/Solution/:name': {folder: {}},
 
     // Then the file is copied into the specified destination (on the left).
-    './design/Solution/:name/:readme': { template: 'README.md'},
-    './design/Solution/:name/UseCases.puml': { template: 'UseCases.puml'},
-    './design/Solution/:name/UserInteraction.puml': { template: 'UserInteraction.puml'},
-    './design/Solution/:name/Logical.puml': { template: 'Logical.puml'},
-    './design/Solution/:name/Deployment.puml': { template: 'Deployment.puml'},
-    './design/Solution/:name/Physical.puml': { template: 'Physical.puml'},
-    './design/Solution/:name/Process.puml': { template: 'Process.puml'},
+    './test/Solution/:testName': {template: 'subsystem.test.js'},
+    './design/Solution/:name/:readme': {template: 'README.md'},
+    './design/Solution/:name/UseCases.puml': {template: 'UseCases.puml'},
+    './design/Solution/:name/UserInteraction.puml': {template: 'UserInteraction.puml'},
+    './design/Solution/:name/Logical.puml': {template: 'Logical.puml'},
+    './design/Solution/:name/Deployment.puml': {template: 'Deployment.puml'},
+    './design/Solution/:name/Physical.puml': {template: 'Physical.puml'},
+    './design/Solution/:name/Process.puml': {template: 'Process.puml'}
   },
 
 
@@ -124,9 +137,6 @@ module.exports = {
    */
   templatesDirectory: require('path').resolve(__dirname, './templates')
 };
-
-
-
 
 
 /**
@@ -143,14 +153,14 @@ module.exports = {
  * @api private
  */
 
-function INVALID_SCOPE_VARIABLE (varname, details, message) {
+function INVALID_SCOPE_VARIABLE(varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "bouquet-SubSystem":\n'+
-  'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-bouquet-subsystem`, please resolve this '+
-  'issue and publish a new patch release.';
+    'Issue encountered in generator "bouquet-SubSystem":\n' +
+    'Missing required scope variable: `%s`"\n' +
+    'If you are the author of `sails-generate-bouquet-subsystem`, please resolve this ' +
+    'issue and publish a new patch release.';
 
-  message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');
+  message = (message || DEFAULT_MESSAGE) + (details ? '\n' + details : '');
   message = util.inspect(message, varname);
 
   return new Error(message);

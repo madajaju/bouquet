@@ -69,10 +69,13 @@ module.exports = {
 
     // Decide the output filename for use in targets below:
     scope.name = scope.args[1];
-    scope.readme = "Scenario-" + scope.args[1] + ".md";
+    scope.name = scope.name.replace(/\s/g, "-");
+    scope.readme = "Scenario-" + scope.name + ".md";
     scope.usecase = scope.args[0];
+    scope.usecase = scope.usecase.replace(/\s/g, "-");
+    scope.testName = scope.usecase + "_" + scope.name + ".test.js";
     scope.systemName = package.name;
-    scope.diagramName = scope.args[1] + ".puml";
+    scope.diagramName = scope.name + ".puml";
 
     // When finished, we trigger a callback with no error
     // to begin generating files/folders as specified by
@@ -98,7 +101,7 @@ module.exports = {
     // The `template` helper reads the specified template, making the
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
-    // './test/UseCases/:testName': { template: 'usecase.test.js' },
+    './test/UseCases/:testName': { template: 'usecase.test.js' },
     './design/UseCases/:usecase/:diagramName': { template: 'ScenarioName.puml' },
     './design/UseCases/:usecase/:readme': { template: 'README.md' },
 

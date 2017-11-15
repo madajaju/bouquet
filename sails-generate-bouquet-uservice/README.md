@@ -23,7 +23,7 @@ Then merge the following into your `.sailsrc` file:
 ## Usage
 
 ```bash
-$ sails generate bouquet-uservice 
+$ sails generate bouquet-uservice <uservice-name> 
 ```
 
 ## Bouquet uService Pattern

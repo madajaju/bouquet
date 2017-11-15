@@ -1,13 +1,14 @@
 @startuml
 
 package "<%= name %>" {
-  interface "<%= name %>" {
-  }
-}
+    interface "<%= name %>" {
 
-CLI ()-- "<%= name %>"
-"REST API" ()-- "<%= name %>"
-"Web Portal" ()-- "<%= name %>"
+    }
+    CLI ()-- "<%= name %>"
+    REST ()-- "<%= name %>"
+    Web ()-- "<%= name %>"
+
+}
 
 
 @enduml

@@ -1,7 +1,7 @@
 {
   "name": "sails-generate-bouquet-uservice",
-  "version": "1.0.1",
-  "description": "sails generate bouquet-uservice",
+  "version": "1.1.1",
+  "description": "sails generate bouquet-uservice <serviceName>",
   "main": "index.js",
   "scripts": {
     "test": "echo 'No further automated tests have been implemented for this generator yet.'",

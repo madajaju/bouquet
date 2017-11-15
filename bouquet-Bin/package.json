@@ -1,0 +1,33 @@
+{
+  "name": "sails-generate-bouquet-actor",
+  "version": "1.1.1",
+  "description": "sails generate bouquet-Actor",
+  "main": "Generator.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "bouquet-Actor",
+    "generator",
+    "sails",
+    "generate",
+    "plugin"
+  ],
+  "author": "madajaju",
+  "email": "darren@pulsipher.org",
+  "license": "MIT",
+  "dependencies": {
+  	"lodash": ">=2.4.x",
+  	"merge-defaults": ">=0.1.0"
+  },
+  "devDependencies": {
+    "sails-generate": "*",
+    "reportback": "*",
+    "fs-extra": "*"
+  },
+  "sailsGenerator": {
+    "type": "bouquet-Actor",
+    "behavior": "overrides `sails generate bouquet-Actor`",
+    "sailsVersion": "~0.11.0"
+  }
+}

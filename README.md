@@ -251,10 +251,61 @@ program
 Command scripts are where everything really happens. The previous scripts just setup for accessing the
 command scripts. The naming convention of the command scripts follows the actor and subsystem nomenclature
 "projectName-actorName-command", "projectName-subsystemName-command", or "projectName-command".
+
 The trick of the command is to connect to the rest interface of the system. This should coorespond
-to the controller with a simalar name. For example if you have actor command script then there should
+to the controller with a similar name. For example if you have actor command script then there should
 be a cooresponding controller for the actor. This way the REST and CLI APIs are consistent.
 
+Here is an example of a project (caade) that has three actors (dev, ops, admin) and two subsystems (stack, policy).
+The following commands would be available
+```
+# caade dev
+# caade ops
+# caade admin
+# caade stack
+# caade policy
+```
+
+The top level command file "bin/caade" will look something like this
+
+```javascript
+#!/usr/bin/env node
+
+var program =  require('commander');
+
+program
+  .version("0.1.0")
+  .command('dev <command>', 'Developer Commands')
+  .command('ops <command>', 'Operators Commands')
+  .command('admin <command>', 'Admin Commands')
+  .command('stack <command>', 'Stack Manager Commands')
+  .command('policy <command>', 'Policy Manager Commands')
+  .parse(process.argv);
+
+```
+
+Each subsequent actor or subsystem commands would have a file that would contain something similar to the following
+```javascript
+#!/usr/bin/env node
+
+var program =  require('commander');
+
+program
+  .version("0.1.0")
+  .command('create <name>', 'Developer Create')
+  .command('delete <name>', 'Developer Delete')
+  .command('ls', 'List Developers')
+  .parse(process.argv);
+```
+
+Now each one of the commands for the actor or subsystem will have its own file with the names as follows
+```
+# caade-dev-create
+# caade-dev-delete
+# caade-dev-ls
+```
+
+Each one of the command scripts will access the rest interface or process some things directory in the command shell. 
 The following is an example of a simple Command Script that accesses the rest interface.
 In this case it shows information about a stack in the system
 
@@ -346,6 +397,37 @@ client.post(url, args, function (data, response) {
     console.log("Stack " + data.stack.name + " has been created for environment " + program.env);
   }
 });
+```
+
+
+## Actions
+I recently (Nov 2017) extended bouquet to handle the creation of Actions for Controllers.
+The concept behind this is to auto generate tests, command line interface and controllers
+for the actions created.
+
+### Pattern
+
+1. An action is created for a specific controller. 
+1. And a cooresponding binary is created to access the action.
+1. Finally a test set of test cases is created for the action.
+```
+* api
+  * controllers
+    * <controller-name>
+       * <action-name>.js
+* bin
+  * <controller-name>-<action-name>     
+* test
+  * bin
+    * <controller-name>-<action-name>.test.js
+  * integration
+    * <controller-name>-<action-name>.test.js
+```
+
+### Usage
+
+```bash
+$ sails generate bouquet-Action <controller> <action>
 ```
 
 

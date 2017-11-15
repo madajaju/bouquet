@@ -72,7 +72,6 @@ module.exports = {
     var subSystems = getSubSystems(this.subsystemTargets, solutionDir);
 
     console.log(useCases);
-    console.log("Actors:", actors);
 
     // Attach defaults
     _.defaults(scope, {
@@ -97,7 +96,7 @@ module.exports = {
    * @type {Object}
    */
   useCaseTargets: {
-    './test/UseCases/:testName.test.js': {template: 'usecase.test.js'},
+    './test/UseCases/:name.test.js': {template: 'usecase.test.js'},
   },
   actorTargets: {
     './test/Actors/:actor.test.js': {template: 'actor.test.js'},
@@ -121,9 +120,9 @@ module.exports = {
     // './design/UseCases/:name/:readme': {template: 'README.md'},
 
     // Creates a folder at a static path
-    './test/UseCases': {folder: {force: true}},
-    './test/Actors': {folder: {force: true}},
-    './test/SubSystems': {folder: {force: true}},
+    // './test/UseCases': {folder: {force: true}},
+    // './test/Actors': {folder: {force: true}},
+    // './test/SubSystems': {folder: {force: true}},
     //'./design/UseCases/:name': {folder: {force: true}}
 
   },
@@ -193,6 +192,10 @@ function getUseCases(targets, folder) {
     }) */
 
   usecases.forEach(function (usecase) {
+    // Ok now update the targets
+    Object.keys(targets).forEach(function(key) {
+      targets[key];
+    }keys())
     var scenarios = fs.readdirSync(path.join(folder,usecase))
       .filter(function(file) {
         return file.match(/^Scenario\-/);

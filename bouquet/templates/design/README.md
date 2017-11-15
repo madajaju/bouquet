@@ -1,5 +1,3 @@
-# Architectural Overview
-
 _Description_
 
 ## [Users](Actors)

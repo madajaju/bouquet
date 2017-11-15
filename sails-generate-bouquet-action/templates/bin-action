@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var YAML = require('yamljs');
+
+var program = require('commander');
+var Client = require('node-rest-client').Client;
+var config = require('./config'); /* Replace this with your own config file. */
+var _ = require('lodash');
+
+var client = new Client();
+
+
+program
+  .option('-p, --param <paramName>', 'Description of Param')
+  .parse(process.argv);
+
+var name = program.args;
+
+var url = config.Url + "/<%- controller %>/<%- action %>?";
+
+// Add a parameter to the url.
+if (name) {
+  url += "name=" + name[0];
+}
+
+if (program.param) {
+  url += "&param=" + program.param;
+}
+client.get(url, function (data, response) {
+  // parsed response body as js object
+  if (data.error) {
+    console.error("Error:" + data.error);
+  }
+  else {
+    console.log(data);
+  }
+});

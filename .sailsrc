@@ -7,7 +7,8 @@
     "bouquet-SubSystem": "/Users/dwpulsip/yoly/bouquet/bouquet-SubSystem",
     "bouquet-Scenario": "/Users/dwpulsip/yoly/bouquet/bouquet-Scenario",
     "bouquet-Tests": "/Users/dwpulsip/yoly/bouquet/bouquet-Tests",
-    "bouquet-uservice": "/Users/dwpulsip/yoly/bouquet/sails-generate-bouquet-uservice"
+    "bouquet-uservice": "/Users/dwpulsip/yoly/bouquet/sails-generate-bouquet-uservice",
+    "bouquet-action": "/Users/dwpulsip/yoly/bouquet/sails-generate-bouquet-action"
     }
   }
 }

@@ -52,6 +52,3 @@ See `FAQ.md`.
 **[MIT](./LICENSE)**
 &copy; 2017 [madajaju](http://github.com/madajaju) & contributors
 
-As for [Sails](http://sailsjs.org)?  It's free and open-source under the [MIT License](http://sails.mit-license.org/).
-
-![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)

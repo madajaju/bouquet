@@ -70,10 +70,11 @@ module.exports = {
 
     // Decide the output filename for use in targets below:
     scope.name = scope.args[0];
-    scope.readme = "UseCase-" + scope.args[0] + ".md";
+    scope.name = scope.name.replace(/\s/g, "-");
+    scope.readme = "UseCase-" + scope.name + ".md";
     scope.systemName = package.name;
-    scope.testName = scope.args[0] + ".test.js";
-
+    scope.testName = scope.name + ".test.js";
+    console.log("Name = ", scope.name);
     // When finished, we trigger a callback with no error
     // to begin generating files/folders as specified by
     // the `targets` below.

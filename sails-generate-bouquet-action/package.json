@@ -1,0 +1,32 @@
+{
+  "name": "sails-generate-bouquet-action",
+  "version": "1.1.1",
+  "description": "sails generate bouquet-Action",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No further automated tests have been implemented for this generator yet.'",
+    "pretest": "npm run lint",
+    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0"
+  },
+  "keywords": [
+    "bouquet-Action",
+    "generator",
+    "sails",
+    "generate",
+    "plugin"
+  ],
+  "author": "a node.js/sails user",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "eslint": "3.5.0"
+  },
+  "repository": {"type":"git","url": "https://github.com/madajaju/bouquet/tree/master/sails-generate-bouquet-action"},
+  "sailsGenerator": {
+    "type": "bouquet-Action",
+    "behavior": "Implements or overrides `sails generate bouquet-Action`",
+    "sailsVersion": "^1.0.0"
+  }
+}
