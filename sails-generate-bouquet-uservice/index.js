@@ -70,12 +70,12 @@ module.exports = {
    * @type {Dictionary}
    */
   targets: {
-    './deploy/docker-compose-dev.yaml': {template: 'docker-compose-dev.yaml'},
-    './deploy/docker-compose-test.yaml': {template: 'docker-compose-test.yaml'},
-    './deploy/docker-compose-prod.yaml': {template: 'docker-compose-prod.yaml'},
-    './deploy/uservices/web/Dockerfile': {template: 'uservices/web/Dockerfile'},
-    './deploy/uservices/web/package.json': {template: 'uservices/web/package.json'},
-    './deploy/build.js': {copy: 'build.js'},
+    // './deploy/docker-compose-dev.yaml': {template: 'docker-compose-dev.yaml'},
+    // './deploy/docker-compose-test.yaml': {template: 'docker-compose-test.yaml'},
+    // './deploy/docker-compose-prod.yaml': {template: 'docker-compose-prod.yaml'},
+    // './deploy/uservices/web/Dockerfile': {template: 'uservices/web/Dockerfile'},
+    // './deploy/uservices/web/package.json': {template: 'uservices/web/package.json'},
+    // './deploy/build.js': {copy: 'build.js'},
     './deploy/uservices/:name': {folder: {}},
     './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
     './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},

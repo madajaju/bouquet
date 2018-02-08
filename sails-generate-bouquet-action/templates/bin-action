@@ -1,32 +1,31 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var YAML = require('yamljs');
+const fs = require('fs');
+const YAML = require('yamljs');
 
-var program = require('commander');
-var Client = require('node-rest-client').Client;
-var config = require('./config'); /* Replace this with your own config file. */
-var _ = require('lodash');
+const program = require('commander');
+const Client = require('node-rest-client').Client;
+const action = require('../api/controllers/<%- controller %>/<%- action %>');
+const config = require('./config'); /* Replace this with your own config file. */
+const _ = require('lodash');
 
-var client = new Client();
+let client = new Client();
+_.each(Object.keys(action.inputs), function(key) {
+    if(key != "mode") { // Used to force json output instead of html
+        program.option('-' + key[0] + ", --" + key + " <" + action.inputs[key].type + ">", action.inputs[key].description);
+    }
+});
+program.parse(process.argv);
 
+let url = config.Url + "/<%- controller %>/<%- action %>?";
+let params = [ "mode=json" ]; // Json results expected.
+_.each(Object.keys(action.inputs), function(key) {
+    if(key != "mode" && program.hasOwnProperty(key)) {
+        params.push(key + "=" + program[key]);
+    }
+});
+url += params.join("&");
 
-program
-  .option('-p, --param <paramName>', 'Description of Param')
-  .parse(process.argv);
-
-var name = program.args;
-
-var url = config.Url + "/<%- controller %>/<%- action %>?";
-
-// Add a parameter to the url.
-if (name) {
-  url += "name=" + name[0];
-}
-
-if (program.param) {
-  url += "&param=" + program.param;
-}
 client.get(url, function (data, response) {
   // parsed response body as js object
   if (data.error) {

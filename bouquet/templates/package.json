@@ -31,8 +31,8 @@
     "build-doc": "cd design && gwtc . -t <%= projectName %> --css doc.css",
     "debug": "node debug app.js",
     "deploy-apps": "node ./deploy/build deploy",
-    "deploy": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-dev.yaml <%= projectName %>-dev",
-    "deploy-test": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-test.yaml <%= projectName %>-test",
+    "deploy": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-dev.yaml <%= projectName %>Dev",
+    "deploy-test": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-test.yaml <%= projectName %>Test",
     "deploy-prod": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-prod.yaml <%= projectName %>"
   },
   "main": "app.js",

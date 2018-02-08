@@ -1,11 +1,19 @@
-var request = require('supertest');
-var exec = require('child_process').exec;
+const exec = require('child_process').exec;
+const taction = require('../../controllers/<%- controller %>/<%- action %>');
 
-describe('<%- controller %> <%- action %> Test Cases', function () {
+describe('<%- controller %> <%- action %> Script Test Cases', function () {
   describe('Primary <%- controller %> <%- action %> Test Case', function () {
     it('Primary <%- controller %> <%- action %> Good Path', function (done) {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
-        var command = exec("./bin/<%- projectName %>-<%- controller %>-<%- action %>", function (err, stdout, stderr) {
+      let command = "bin/<%- projectName %>-<%- controller %>-<%- action %> ";
+      let params = [];
+      _.each(Object.keys(taction.inputs), function (key) {
+        if(key != "mode") {
+          params.push("--" + key + " " + taction.inputs[key].type);
+        }
+      });
+      command += params.join(" ");
+      let results = exec(command, function (err, stdout, stderr) {
         console.log(stderr);
         if (err) {
           done(err);
@@ -14,7 +22,7 @@ describe('<%- controller %> <%- action %> Test Cases', function () {
           console.log(stdout);
         }
       });
-      command.on('exit', function (code) {
+      results.on('exit', function (code) {
         done(code);
       });
     });

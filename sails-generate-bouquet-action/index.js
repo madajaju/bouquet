@@ -45,7 +45,7 @@ module.exports = {
     }
 
     if (invalidPackageJSON) {
-      return cb.invalid('Sorry, this command can only be used in the root directory of a Sails project.');
+      return done.invalid('Sorry, this command can only be used in the root directory of a Sails project.');
     }
 
     // scope.rootPath is the base path for this generator
@@ -56,7 +56,7 @@ module.exports = {
     // And someone ran this generator from `/Users/dbowie/sailsStuff`,
     // then `/Users/dbowie/sailsStuff/Foobar.md` would be created.
     if (!scope.rootPath) {
-      return cb(INVALID_SCOPE_VARIABLE('rootPath'));
+      return done(INVALID_SCOPE_VARIABLE('rootPath'));
     }
 
 
@@ -70,6 +70,28 @@ module.exports = {
     scope.controller = scope.controller.replace(/\s/g, "-").toLowerCase();
     scope.action = scope.action.replace(/\s/g, "-").toLowerCase();
     scope.projectName = package.name;
+    scope.attributes = scope.args.slice(2);
+
+    // Validate optional attribute arguments
+    var attributes = scope.attributes;
+    var invalidAttributes = [];
+    attributes = _.map(attributes, function(attribute, i) {
+
+      var parts = attribute.split(':');
+
+      if (parts[1] === undefined) parts[1] = 'string';
+
+      // Handle invalidAttributes
+      if (!parts[1] || !parts[0]) {
+        invalidAttributes.push(
+          'Invalid attribute notation:   "' + attribute + '"');
+        return;
+      }
+      return {
+        name: parts[0],
+        type: parts[1]
+      };
+    });
     console.log("Creating Action: " + scope.controller + "-" + scope.action);
 
     return done();
@@ -104,7 +126,7 @@ module.exports = {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     './api/controllers/:controller/:action.js': { template: 'action.js'},
     './test/bin/:controller-:action.test.js': { template: 'bin.test.js'},
-    './test/integration/:controller-:action.test.js': { template: 'controller.test.js'},
+    './test/integration/Controller-:controller-:action.test.js': { template: 'controller.test.js'},
     './bin/:projectName-:controller-:action': { template: 'bin-action'}
   },
 
