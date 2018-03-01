@@ -2,9 +2,10 @@
  * Module dependencies
  */
 
-var util = require('util');
-var path = require('path');
-var _ = require('lodash');
+const util = require('util');
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
 
 
 /**
@@ -16,6 +17,7 @@ var _ = require('lodash');
  * @description Generates a bouquet-Action.
  * @docs https://sailsjs.com/docs/concepts/extending-sails/generators/custom-generators
  */
+
 
 module.exports = {
 
@@ -70,12 +72,10 @@ module.exports = {
     scope.controller = scope.controller.replace(/\s/g, "-").toLowerCase();
     scope.action = scope.action.replace(/\s/g, "-").toLowerCase();
     scope.projectName = package.name;
-    scope.attributes = scope.args.slice(2);
+    let attributes = scope.args.slice(2);
 
-    // Validate optional attribute arguments
-    var attributes = scope.attributes;
-    var invalidAttributes = [];
-    attributes = _.map(attributes, function(attribute, i) {
+    let invalidAttributes = [];
+    attributes = _.map(attributes, function (attribute, i) {
 
       var parts = attribute.split(':');
 
@@ -92,11 +92,15 @@ module.exports = {
         type: parts[1]
       };
     });
-    console.log("Creating Action: " + scope.controller + "-" + scope.action);
 
+    // Generatee Attribute section
+    // Render some stringified code from the action template
+    // and make it available in our scope for use later on.
+    scope.attributes = this.renderTemplate('attribute-action.js', attributes);
+    scope.binAttributes = this.renderTemplate('bin-attributes', attributes);
+    console.log("Creating Action: " + scope.controller + "-" + scope.action);
     return done();
   },
-
 
 
   /**
@@ -124,10 +128,10 @@ module.exports = {
     // • See https://sailsjs.com/docs/concepts/extending-sails/generators for more documentation.
     // (Or visit https://sailsjs.com/support and talk to a maintainer of a core or community generator.)
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    './api/controllers/:controller/:action.js': { template: 'action.js'},
-    './test/bin/:controller-:action.test.js': { template: 'bin.test.js'},
-    './test/integration/Controller-:controller-:action.test.js': { template: 'controller.test.js'},
-    './bin/:projectName-:controller-:action': { template: 'bin-action'}
+    './api/controllers/:controller/:action.js': {template: 'action.js'},
+    './test/bin/:controller-:action.test.js': {template: 'bin.test.js'},
+    './test/integration/Controller-:controller-:action.test.js': {template: 'controller.test.js'},
+    './bin/:projectName-:controller-:action': {template: 'bin-action'}
   },
 
 
@@ -137,6 +141,23 @@ module.exports = {
    *
    * @type {String}
    */
-  templatesDirectory: path.resolve(__dirname, './templates')
+  templatesDirectory: path.resolve(__dirname, './templates'),
+
+  renderTemplate: function(name, parameters) {
+    let ATTRIBUTE_TEMPLATE = path.resolve(__dirname, './templates/' + name);
+    ATTRIBUTE_TEMPLATE = fs.readFileSync(ATTRIBUTE_TEMPLATE, 'utf8');
+    var compiledTemplate = _.template(ATTRIBUTE_TEMPLATE);
+
+    // Render some stringified code from the action template
+    // and make it available in our scope for use later on.
+    return _.map(parameters, function (paramter) {
+      return _.unescape(
+          compiledTemplate({
+            name: paramter.name,
+            type: paramter.type
+          })
+        );
+    }).join('');
+  }
 
 };

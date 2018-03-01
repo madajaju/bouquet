@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var fs = require('fs');
 var util = require('util');
 var path = require('path');
 var _ = require('lodash');
@@ -61,27 +62,41 @@ module.exports = {
     scope.name = scope.name.replace(/\s/g, "-");
     scope.projectName = package.name.toLowerCase();
 
+    /*************************************************************************
+     * Now decide which targets are going to be used if this is the first time
+     * this is being run or not.
+     * Check if the deploy/web exits if it does then just generate the uservice
+     * Otherwise generate the framework and the uservice.
+     */
+    try {
+      if (fs.statSync(path.join(scope.rootPath, "deploy/uservices/web")).isDirectory()) {
+        this.targets = {
+          './deploy/uservices/:name': {folder: {}},
+          './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
+          './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},
+          './deploy/uservices/:name/package.json': {template: 'uservices/uservice/package.json'}
+        };
+      }
+    }
+    catch (error) {
+      if (error) {
+        this.targets = {
+          './deploy/dev/docker-compose.yaml': {template: 'docker-compose-dev.yaml'},
+          './deploy/test/docker-compose.yaml': {template: 'docker-compose-test.yaml'},
+          './deploy/production/docker-compose.yaml': {template: 'docker-compose-prod.yaml'},
+          './deploy/build/docker-compose.yaml': {template: 'docker-compose-dev.yaml'},
+          './deploy/uservices/web/Dockerfile': {template: 'uservices/web/Dockerfile'},
+          './deploy/uservices/web/package.json': {template: 'uservices/web/package.json'},
+          './deploy/build.js': {copy: 'build.js'},
+          './deploy/uservices/:name': {folder: {}},
+          './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
+          './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},
+          './deploy/uservices/:name/package.json': {template: 'uservices/uservice/package.json'}
+        };
+      }
+    }
     return done();
   },
-
-
-  /**
-   * The files/folders to generate.
-   * @type {Dictionary}
-   */
-  targets: {
-    // './deploy/docker-compose-dev.yaml': {template: 'docker-compose-dev.yaml'},
-    // './deploy/docker-compose-test.yaml': {template: 'docker-compose-test.yaml'},
-    // './deploy/docker-compose-prod.yaml': {template: 'docker-compose-prod.yaml'},
-    // './deploy/uservices/web/Dockerfile': {template: 'uservices/web/Dockerfile'},
-    // './deploy/uservices/web/package.json': {template: 'uservices/web/package.json'},
-    // './deploy/build.js': {copy: 'build.js'},
-    './deploy/uservices/:name': {folder: {}},
-    './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
-    './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},
-    './deploy/uservices/:name/package.json': {template: 'uservices/uservice/package.json'}
-  },
-
 
   /**
    * The absolute path to the `templates` for this generator

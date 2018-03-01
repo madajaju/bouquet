@@ -1,0 +1,1 @@
+program.option('-<%= name[0] %>, --<%= name %> <<%= type %>>',  'Add Description here');

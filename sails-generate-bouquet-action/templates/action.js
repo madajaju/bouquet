@@ -6,15 +6,13 @@ module.exports = {
   description: ' Add description ',
 
   inputs: {
-    userId: {
+    /* <parameter name>: {
       description: 'The ID of the user to look up.',
-      // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
-      // if the `userId` parameter is not a number.
-      type: 'number',
-      // By making the `userId` parameter required, Sails will automatically respond with
-      // `res.badRequest` if it's left out.
+      type: '<parameter type>',
       required: true
     },
+    */
+    <%= attributes %>
     mode: {
       description: "results format: json or html",
       type: 'string',
