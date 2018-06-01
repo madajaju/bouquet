@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-tests",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "sails generate bouquet-Tests",
   "main": "Generator.js",
   "scripts": {
@@ -28,6 +28,6 @@
   "sailsGenerator": {
     "type": "bouquet-Tests",
     "behavior": "overrides `sails generate bouquet-Tests`",
-    "sailsVersion": "~0.11.0"
+    "sailsVersion": "~1.0.0"
   }
 }

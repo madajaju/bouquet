@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-scenario",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "sails generate bouquet-Scenario",
   "main": "Generator.js",
   "scripts": {
@@ -28,6 +28,6 @@
   "sailsGenerator": {
     "type": "bouquet-Scenario",
     "behavior": "overrides `sails generate bouquet-Scenario`",
-    "sailsVersion": "~0.11.0"
+    "sailsVersion": "~1.0.0"
   }
 }
