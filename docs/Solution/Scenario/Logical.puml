@@ -1,0 +1,14 @@
+@startuml
+
+package "Scenario" {
+    interface "Scenario" {
+
+    }
+    CLI ()-- "Scenario"
+    REST ()-- "Scenario"
+    Web ()-- "Scenario"
+
+}
+
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+package "SubSystem" {
+    interface "SubSystem" {
+
+    }
+    CLI ()-- "SubSystem"
+    REST ()-- "SubSystem"
+    Web ()-- "SubSystem"
+
+}
+
+
+@enduml

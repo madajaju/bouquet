@@ -1,0 +1,14 @@
+@startuml
+
+package "UseCase" {
+    interface "UseCase" {
+
+    }
+    CLI ()-- "UseCase"
+    REST ()-- "UseCase"
+    Web ()-- "UseCase"
+
+}
+
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+
+skinparam packageStyle rect
+
+package bouquet #88ffaa {
+    package "Action" { }
+    package "Actor" { }
+    package "Bin" { }
+    package "Micro Service" { }
+    package "Scenario" { }
+    package "Sub System" { }
+    package "Test" { }
+    package "Use Case" { }
+}
+
+package sails #88aaff {
+    package "api" #dddddd {
+        package "controllers" { }
+        package "models" { }
+    }
+    package "bin" #dddddd { }
+    package "docs" #dddddd { }
+    package "deploy" #dddddd {
+        package "uservices" { }
+    }
+    package "test" #dddddd { }
+    package "views" #dddddd { }
+}
+
+Action ..> controllers
+Action ..> bin
+Actor ..> controllers
+Actor ..> test
+Actor ..> docs
+Actor ..> bin
+Actor ..> views
+Bin ..> bin
+"Micro Service" ..> uservices
+"Micro Service" ..> docs
+Scenario ..> docs
+Scenario ..> test
+"Sub System" ..> docs
+Test ..> test
+"Use Case" ..> docs
+"Use Case" ..> test
+bin --> controllers
+views --> controllers
+
+@enduml
+

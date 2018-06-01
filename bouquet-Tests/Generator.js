@@ -117,7 +117,7 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     // './test/UseCases/:testName': {template: 'usecase.test.js'},
     // './design/UseCases/:name/Activities.puml': {template: 'Activities.puml'},
-    // './design/UseCases/:name/:readme': {template: 'README.md'},
+    // './design/UseCases/:name/:readme': {template: 'Solution.rst'},
 
     // Creates a folder at a static path
     // './test/UseCases': {folder: {force: true}},

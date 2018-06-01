@@ -85,7 +85,7 @@ module.exports = {
     scope.name = scope.name.replace(/\s/g, "-");
     scope.testName = scope.name + ".test.js";
     scope.projectName = package.name;
-    scope.readme = "SubSystem-" + scope.name + ".md";
+    scope.readme = "SubSystem-" + scope.name + ".rst";
     scope.name = scope.myRoot + scope.name;
     scope.testName = scope.myRoot + scope.testName;
     console.log("Creating " + scope.name);
@@ -115,17 +115,17 @@ module.exports = {
     // The `template` helper reads the specified template, making the
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Creates a folder at a static path
-    './design/Solution/:name': {folder: {}},
+    './docs/Solution/:name': {folder: {}},
 
     // Then the file is copied into the specified destination (on the left).
     './test/Solution/:testName': {template: 'subsystem.test.js'},
-    './design/Solution/:name/:readme': {template: 'README.md'},
-    './design/Solution/:name/UseCases.puml': {template: 'UseCases.puml'},
-    './design/Solution/:name/UserInteraction.puml': {template: 'UserInteraction.puml'},
-    './design/Solution/:name/Logical.puml': {template: 'Logical.puml'},
-    './design/Solution/:name/Deployment.puml': {template: 'Deployment.puml'},
-    './design/Solution/:name/Physical.puml': {template: 'Physical.puml'},
-    './design/Solution/:name/Process.puml': {template: 'Process.puml'}
+    './docs/Solution/:name/:readme': {template: 'index.rst'},
+    './docs/Solution/:name/UseCases.puml': {template: 'UseCases.puml'},
+    './docs/Solution/:name/UserInteraction.puml': {template: 'UserInteraction.puml'},
+    './docs/Solution/:name/Logical.puml': {template: 'Logical.puml'},
+    './docs/Solution/:name/Deployment.puml': {template: 'Deployment.puml'},
+    './docs/Solution/:name/Physical.puml': {template: 'Physical.puml'},
+    './docs/Solution/:name/Process.puml': {template: 'Process.puml'}
   },
 
 

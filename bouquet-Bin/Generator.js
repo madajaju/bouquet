@@ -104,7 +104,7 @@ module.exports = {
     // The `template` helper reads the specified template, making the
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
-    './bin/:cmdName': {template: 'binCommand'},
+    './bin/:cmdName': {template: 'bin-action'},
   },
 
   /**

@@ -1,0 +1,18 @@
+@startuml
+package docs {
+  package Solution {
+    package Services {
+      class "index-rst"
+      package "NewService " {
+        class "Deployment-puml"
+        class "Logical-puml"
+        class "Physical-puml"
+        class "Process-puml"
+        class "UseCases-puml"
+        class "UserInteraction-puml"
+        class "NewService-rst"
+      }
+    }
+  }
+}
+@enduml

@@ -66,7 +66,6 @@ module.exports = {
     _.defaults(scope, {
       createdAt: new Date()
     });
-
     scope.controller = scope.args[0];
     scope.action = scope.args[1];
     scope.controller = scope.controller.replace(/\s/g, "-").toLowerCase();

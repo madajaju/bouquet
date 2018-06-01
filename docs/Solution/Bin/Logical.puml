@@ -1,0 +1,14 @@
+@startuml
+
+package "Bin" {
+    interface "Bin" {
+
+    }
+    CLI ()-- "Bin"
+    REST ()-- "Bin"
+    Web ()-- "Bin"
+
+}
+
+
+@enduml

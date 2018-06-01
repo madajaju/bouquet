@@ -103,19 +103,21 @@ module.exports = {
     // Creates a folder at a static path
     './bin/:name': { template: 'bin/systemName' },
     './Jenkinsfile': { template: 'Jenkinsfile' },
-    './design/_Toc.md': { template: 'design/_Toc.md' },
-    './design/plantuml.jar': { copy: 'design/plantuml.jar' },
+    './docs/conf.py': { template: 'docs/conf.py' },
+    './docs/plantuml.jar': { copy: 'docs/plantuml.jar' },
     './package.json.new': { template: 'package.json' },
-    './design/doc.css': { copy: 'design/doc.css' },
-    './design/Home.md': { template: 'design/README.md' },
-    './design/Architecture.puml': { template: 'design/Logical.puml' },
-    './design/Solution/Solution.md': { template: 'design/Solution/README.md' },
-    './design/Solution/Deployment.puml': { template: 'design/Solution/Deployment.puml' },
-    './design/Solution/Logical.puml': { template: 'design/Solution/Logical.puml' },
-    './design/Solution/Physical.puml': { template: 'design/Solution/Physical.puml' },
-    './design/Solution/Process.puml': { template: 'design/Solution/Process.puml' },
-    './design/UseCases/UseCases.md': { template: 'design/UseCases/README.md' },
-    './design/Actors/Actors.md': { template: 'design/Actors/README.md' }
+    './docs/Home.rst': { template: 'docs/Home.rst' },
+    './docs/index.rst': { template: 'docs/index.rst' },
+    './docs/Architecture.puml': { template: 'docs/Logical.puml' },
+    './docs/Solution/Solution.rst': { template: 'docs/Solution/Solution.rst' },
+    './docs/Solution/index.rst': { template: 'docs/Solution/index.rst' },
+    './docs/Solution/Deployment.puml': { template: 'docs/Solution/Deployment.puml' },
+    './docs/Solution/Logical.puml': { template: 'docs/Solution/Logical.puml' },
+    './docs/Solution/Physical.puml': { template: 'docs/Solution/Physical.puml' },
+    './docs/Solution/Process.puml': { template: 'docs/Solution/Process.puml' },
+    './docs/UseCases/index.rst': { template: 'docs/UseCases/index.rst' },
+    './docs/UseCases/UseCases.puml': { template: 'docs/UseCases/UseCases.puml' },
+    './docs/Actors/index.rst': { template: 'docs/Actors/index.rst' }
   },
 
 

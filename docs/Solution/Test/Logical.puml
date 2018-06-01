@@ -1,0 +1,14 @@
+@startuml
+
+package "Test" {
+    interface "Test" {
+
+    }
+    CLI ()-- "Test"
+    REST ()-- "Test"
+    Web ()-- "Test"
+
+}
+
+
+@enduml

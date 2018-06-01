@@ -1,0 +1,14 @@
+@startuml
+
+interface external
+
+package  "<%= name %>" {
+  interface internal
+  node service
+  folder image
+}
+service -- image
+external -- service : 3000
+internal -- service : 5000
+
+@enduml

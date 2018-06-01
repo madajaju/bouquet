@@ -59,6 +59,7 @@ module.exports = {
 
     // Decide the output filename for use in targets below:
     scope.name = scope.args[0].toLowerCase();
+    scope.readme = "Service-" + scope.name + ".rst";
     scope.name = scope.name.replace(/\s/g, "-");
     scope.projectName = package.name.toLowerCase();
 
@@ -71,10 +72,19 @@ module.exports = {
     try {
       if (fs.statSync(path.join(scope.rootPath, "deploy/uservices/web")).isDirectory()) {
         this.targets = {
-          './deploy/uservices/:name': {folder: {}},
-          './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
-          './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},
-          './deploy/uservices/:name/package.json': {template: 'uservices/uservice/package.json'}
+            './deploy/uservices/:name': {folder: {}},
+            './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
+            './docs/Solution/Services/:name': {folder: {}},
+            './docs/Solution/Services/:name/:readme': {template: 'docs/index.rst'},
+            './docs/Solution/Services/:name/UseCases.puml': {template: 'docs/UseCases.puml'},
+            './docs/Solution/Services/:name/UserInteraction.puml': {template: 'docs/UserInteraction.puml'},
+            './docs/Solution/Services/:name/Logical.puml': {template: 'docs/Logical.puml'},
+            './docs/Solution/Services/:name/Deployment.puml': {template: 'docs/Deployment.puml'},
+            './docs/Solution/Services/:name/Physical.puml': {template: 'docs/Physical.puml'},
+            './docs/Solution/Services/:name/Process.puml': {template: 'docs/Process.puml'},
+            './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},
+            './deploy/uservices/:name/package.json': {template: 'uservices/uservice/package.json'},
+            './docs/Solution/Services/:name/package.json': {template: 'uservices/uservice/package.json'}
         };
       }
     }
@@ -88,6 +98,8 @@ module.exports = {
           './deploy/uservices/web/Dockerfile': {template: 'uservices/web/Dockerfile'},
           './deploy/uservices/web/package.json': {template: 'uservices/web/package.json'},
           './deploy/build.js': {copy: 'build.js'},
+          './docs/Solution/Services': {folder: {}},
+          './docs/Solution/Services/index.rst': {template: 'index.rst'},
           './deploy/uservices/:name': {folder: {}},
           './deploy/uservices/:name/Dockerfile': {template: 'uservices/uservice/Dockerfile'},
           './deploy/uservices/:name/index.js': {copy: 'uservices/uservice/index.js'},

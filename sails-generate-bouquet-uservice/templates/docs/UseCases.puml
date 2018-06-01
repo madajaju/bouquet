@@ -1,0 +1,18 @@
+@startuml
+
+left to right direction
+
+actor :User:
+actor :SubSystem:
+
+
+rectangle "<%= name %> Service" {
+    UseCase UC1  as "Use Case1"
+    UseCase UC2  as "Use Case2"
+
+    User --> UC1
+    UC1 --> UC2
+    UC2 --> SubSystem
+}
+
+@enduml

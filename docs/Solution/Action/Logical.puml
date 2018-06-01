@@ -1,0 +1,14 @@
+@startuml
+
+package "Action" {
+    interface "Action" {
+
+    }
+    CLI ()-- "Action"
+    REST ()-- "Action"
+    Web ()-- "Action"
+
+}
+
+
+@enduml

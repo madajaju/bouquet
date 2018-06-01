@@ -1,0 +1,11 @@
+@startuml
+
+interface external
+
+package "<%= name %>" #dddddd {
+    component service
+    interface internal
+}
+external - service
+internal - service
+@enduml

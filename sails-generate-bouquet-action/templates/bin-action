@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const YAML = require('yamljs');
+var fs = require('fs');
+var YAML = require('yamljs');
 
 const program = require('commander');
 const Client = require('node-rest-client').Client;
@@ -10,20 +10,29 @@ const _ = require('lodash');
 
 let client = new Client();
 
-// program.option('-n --name <string>', 'This is an required example');
-// program.option('-n --name [string]', 'This is an optional example');
-<%= binAttributes %>
+// BEGIN: Dynamic Mapping based on Controller Action
+const action = require('../api/controllers/<%= controller %>/<%= action %>');
+program.description(action.description);
+_.each(Object.keys(action.inputs), function(key) {
+    if(key != "mode") { // Used to force json output instead of html
+        program.option('-' + key[0] + ", --" + key + " <" + action.inputs[key].type + ">", action.inputs[key].description);
+    }
+});
+// END: Dynamic Mapping based on Controller Action
 
 program.parse(process.argv);
 
-let url = config.Url + "/<%- controller %>/<%- action %>?";
-let params = [ "mode=json" ]; // Json results expected.
-_.each(Object.keys(action.inputs), function(key) {
-    if(key != "mode" && program.hasOwnProperty(key)) {
-        params.push(key + "=" + program[key]);
-    }
-});
-url += params.join("&");
+var url = config.Url + "/<%= controller %>/<%= action %>?";
+
+
+/* Get the arguments passed on the command line and put them in a URL.
+if (name) {
+  url += "name=" + name[0];
+}
+if (program.stack) {
+  url += "&stack=" + program.stack;
+}
+*/
 
 client.get(url, function (data, response) {
   // parsed response body as js object
@@ -31,6 +40,6 @@ client.get(url, function (data, response) {
     console.error("Error:" + data.error);
   }
   else {
-    console.log(data);
+  // Process the data returned.
   }
 });

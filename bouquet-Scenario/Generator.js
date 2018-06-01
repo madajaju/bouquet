@@ -70,7 +70,7 @@ module.exports = {
     // Decide the output filename for use in targets below:
     scope.name = scope.args[1];
     scope.name = scope.name.replace(/\s/g, "-");
-    scope.readme = "Scenario-" + scope.name + ".md";
+    scope.readme = "Scenario-" + scope.name + ".rst";
     scope.usecase = scope.args[0];
     scope.usecase = scope.usecase.replace(/\s/g, "-");
     scope.testName = scope.usecase + "_" + scope.name + ".test.js";
@@ -102,8 +102,8 @@ module.exports = {
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
     './test/UseCases/:testName': { template: 'usecase.test.js' },
-    './design/UseCases/:usecase/:diagramName': { template: 'ScenarioName.puml' },
-    './design/UseCases/:usecase/:readme': { template: 'README.md' },
+    './docs/UseCases/:usecase/:diagramName': { template: 'ScenarioName.puml' },
+    './docs/UseCases/:usecase/:readme': { template: 'index.rst' },
 
     // Creates a folder at a static path
     // './test/UseCases': { folder: { force: true} },

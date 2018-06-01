@@ -27,7 +27,8 @@
   "scripts": {
     "debug": "node debug app.js",
     "build": "node ./deploy/build",
-    "start": "node app.js"
+    "start": "node app.js",
+    "design": "java -jar docs/plantuml.jar docs/*.puml docs/**/*.puml"
   },
   "main": "app.js",
   "repository": {

@@ -1,0 +1,14 @@
+@startuml
+
+package "Actor" {
+    interface "Actor" {
+
+    }
+    CLI ()-- "Actor"
+    REST ()-- "Actor"
+    Web ()-- "Actor"
+
+}
+
+
+@enduml
