@@ -71,6 +71,7 @@ module.exports = {
     // Decide the output filename for use in targets below:
     scope.name = scope.args[0];
     scope.name = scope.name.replace(/\s/g, "-");
+    scope.nameSpaces = scope.name.replace(/-/g, " ");
     scope.readme = "UseCase-" + scope.name + ".rst";
     scope.systemName = package.name;
     scope.testName = scope.name + ".test.js";

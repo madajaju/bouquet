@@ -2,8 +2,13 @@
 Actor "actorName" as A
 
 box "<%= usecase %>" #lightblue
+participant CLI as CLI
+participant Web as Web
 participant "<%= systemName %>" as S
-A -> S : <%= name %>
+A -> CLI : <%= binName %>()
+CLI -> S : <%= restName %>()
+A -> Web : <%= restName %>()
+Web -> S : <%= restName %>()
 end box
 
 @enduml

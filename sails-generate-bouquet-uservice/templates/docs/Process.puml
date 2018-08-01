@@ -4,15 +4,17 @@ partition "<%= name %>" {
 
 }
 
-partition SubSystem  #cccccc {
+partition User  #cccccc {
   (*) --> "Create Project"
   --> "Write Code"
 }
 
-partition "<%= name %>" {
+partition "<%= name %>" #lightblue {
   "Write Code" --> "Test Code"
   "Test Code" --> "Deploy Code"
   "Deploy Code" --> (*)
 }
 
+partition Used  #cccccc {
+}
 @enduml

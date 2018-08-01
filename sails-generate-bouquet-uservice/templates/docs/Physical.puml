@@ -2,10 +2,10 @@
 
 interface external
 
-package "<%= name %>" #dddddd {
+package "<%= name %>" #lightblue {
     component service
     interface internal
 }
-external - service
-internal - service
+external -- service : 3000
+internal - service : 5000
 @enduml

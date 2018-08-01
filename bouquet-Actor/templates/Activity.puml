@@ -1,11 +1,11 @@
 @startuml
 
 
-partition "<%= name %>"  #cccccc {
+partition "<%= nameSpaces %>"  #cccccc {
   (*) --> "Start Here"
 }
 
-partition "system.name" #ffaaaa {
+partition "<%= projectName %>" #lightblue {
   "Start Here" --> "Here"
 }
 

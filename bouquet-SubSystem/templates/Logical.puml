@@ -1,14 +1,24 @@
 @startuml
 
-package "<%= name %>" {
-    interface "<%= name %>" {
-
-    }
-    CLI ()-- "<%= name %>"
-    REST ()-- "<%= name %>"
-    Web ()-- "<%= name %>"
+package "User" #ffffcc {
 
 }
 
+package "Used" #ffffcc {
+
+}
+
+package "<%= nameSpaces %>" #lightblue {
+
+    interface "<%= nameSpaces %>" {
+    }
+
+    CLI ()-- "<%= nameSpaces %>"
+    REST ()-- "<%= nameSpaces %>"
+    Web ()-- "<%= nameSpaces %>"
+}
+
+User --> "<%= nameSpaces %>"
+"<%= nameSpaces %>" --> Used
 
 @enduml

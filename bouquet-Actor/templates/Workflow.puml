@@ -1,7 +1,7 @@
 @startuml
-|<%= name %>|
+|<%= nameSpaces %>|
 start
-|#ffffaa|system.name|
+|#ffffaa|<%= projectName %>|
 fork
 :Create Application Stack;
 :Modify Application Stack;

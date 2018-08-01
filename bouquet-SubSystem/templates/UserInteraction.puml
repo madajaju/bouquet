@@ -1,6 +1,8 @@
 @startuml
 actor User
 
-User -> "<%= name %>": UseCase
+User -> "<%= nameSpaces %>": UseCase
+"<%= nameSpaces %>" -> bin: bin-name()
+bin -> sailsjs: bin/name()
 
 @enduml

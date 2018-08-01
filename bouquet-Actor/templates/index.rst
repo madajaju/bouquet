@@ -1,7 +1,7 @@
-.. _<%= name %>:
+.. _Actor-<%= name %>:
 
-Actor <%= name %>
-=========================
+<%= nameSpaces %>
+<%= "=".repeat(nameSpaces.length) %>
 
 Use Cases
 ---------

@@ -78,6 +78,7 @@ module.exports = {
     scope.projectName = package.name;
     scope.name = scope.args[0];
     scope.name = scope.name.replace(/\s/g, "-");
+    scope.nameSpaces = scope.args[0];
     scope.nickname = scope.args[1];
     scope.testName = scope.name + ".test.js";
     scope.readme = "Actor-" + scope.args[0] + ".rst";
@@ -113,7 +114,7 @@ module.exports = {
     './docs/Actors/:name/:readme': {template: 'index.rst'},
     './docs/Actors/:name/UseCases.puml': {template: 'UseCases.puml'},
     './docs/Actors/:name/Workflow.puml': {template: 'Workflow.puml'},
-    './api/controllers/:controllerFileName': {template: 'ActorController.js'},
+    './api/controllers/:name': {folder: {}},
     './bin/:binName': {template: 'binCommand'},
     './test/Actors/:testName': {template: 'actor.test.js'}
   },

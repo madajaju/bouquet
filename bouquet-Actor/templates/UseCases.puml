@@ -2,9 +2,9 @@
 
 left to right direction
 
-:<%= name %>: as Actor
+:<%= nameSpaces %>: as Actor
 
-rectangle "system.name" {
+rectangle "<%= projectName %>" #lightblue {
     (Use Case) as U1
 }
 

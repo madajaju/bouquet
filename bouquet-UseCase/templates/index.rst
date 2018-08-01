@@ -1,21 +1,27 @@
 .. _UseCase-<%= name %>:
 
-Use Case <%= name %>
-====================
+<%= nameSpaces %>
+<%= "=".repeat(nameSpaces.length) %>
 
-_Description_
+*Add Description*
 
 Actors
 ------
 
-* _Actors_
+* :ref:`Actor-User`
 
 Activities
 ----------
 
 .. image:: Activities.png
 
-* _Activities_
+* Activity from the diagram
+
+Systems Involved
+----------------
+
+* :ref:`SubSystem-System`
+
 
 Detail Scenarios
 ----------------
@@ -25,10 +31,4 @@ Detail Scenarios
    :maxdepth: 1
 
    Scenario*
-
-Systems Involved
-----------------
-
-* _Systems_
-
 

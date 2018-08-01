@@ -98,6 +98,13 @@ module.exports = {
     scope.attributes = this.renderTemplate('attribute-action.js', attributes);
     scope.binAttributes = this.renderTemplate('bin-attributes', attributes);
     console.log("Creating Action: " + scope.controller + "-" + scope.action);
+    let bin = scope.projectName + '-' + scope.controller;
+    try {
+      fs.statSync(path.join(scope.rootPath, "bin/" + bin)).isFile();
+    }
+    catch(e) {
+      this.targets['./bin/:projectName-:controller'] = {template: 'bin-command'};
+    }
     return done();
   },
 
@@ -130,7 +137,8 @@ module.exports = {
     './api/controllers/:controller/:action.js': {template: 'action.js'},
     './test/bin/:controller-:action.test.js': {template: 'bin.test.js'},
     './test/integration/Controller-:controller-:action.test.js': {template: 'controller.test.js'},
-    './bin/:projectName-:controller-:action': {template: 'bin-action'}
+    './bin/:projectName-:controller-:action': {template: 'bin-action'},
+
   },
 
 

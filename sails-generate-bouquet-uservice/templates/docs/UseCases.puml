@@ -6,7 +6,7 @@ actor :User:
 actor :SubSystem:
 
 
-rectangle "<%= name %> Service" {
+rectangle "<%= name %> Service" #lightblue {
     UseCase UC1  as "Use Case1"
     UseCase UC2  as "Use Case2"
 

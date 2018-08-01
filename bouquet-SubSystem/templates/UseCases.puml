@@ -2,16 +2,12 @@
 
 left to right direction
 
-skinparam usecase {
-  BackgroudnColor #ffffaa
-  BackgroundColor<<Main>> #aaffff
-}
 actor :User: <<Person>>
 actor :SubSystem: <<Person>>
 
 
-rectangle "<%= name %>" {
-UseCase UC1 <<Main>> as "Use Case1"
+rectangle "<%= nameSpaces %>" #lightBlue {
+UseCase UC1  as "Use Case1"
 UseCase UC2  as "Use Case2"
 
 

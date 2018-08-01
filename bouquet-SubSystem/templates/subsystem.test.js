@@ -1,16 +1,16 @@
-describe('Subsystem <%= name %>', function () {
-  describe('REST Test Cases', function () {
-    it('Test REST 1', function (done) {
+describe('Subsystem <%= nameSpaces %>', () => {
+  describe('REST Test Cases', () => {
+    it('Test REST 1', (done) => {
        done();
     });
   });
-  describe('CLI Test Cases', function () {
-    it('Test REST 1', function (done) {
+  describe('CLI Test Cases', () => {
+    it('Test REST 1', (done) => {
        done();
     });
   });
-  describe('Web Test Cases', function () {
-    it('Test REST 1', function (done) {
+  describe('Web Test Cases', () => {
+    it('Test REST 1', (done) => {
        done();
     });
   });

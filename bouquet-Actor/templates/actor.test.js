@@ -1,6 +1,6 @@
-describe('Actor <%= name %>', function () {
-  describe('Primary UseCase', function () {
-    it('Primary Scenario', function (done) {
+describe('Actor <%= nameSpaces %>', () => {
+  describe('Primary UseCase', () => {
+    it('Primary Scenario', (done) => {
                 done();
     });
   });

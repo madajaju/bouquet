@@ -82,11 +82,12 @@ module.exports = {
       i++;
     }
     scope.name = scope.args[i];
-    scope.name = scope.name.replace(/\s/g, "-");
+    scope.name = scope.name.replace(/\s/g, '-');
     scope.testName = scope.name + ".test.js";
     scope.projectName = package.name;
     scope.readme = "SubSystem-" + scope.name + ".rst";
     scope.name = scope.myRoot + scope.name;
+    scope.nameSpaces = scope.name.replace(/-/g, ' ');
     scope.testName = scope.myRoot + scope.testName;
     console.log("Creating " + scope.name);
 

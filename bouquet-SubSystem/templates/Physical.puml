@@ -1,11 +1,30 @@
 @startuml
 
-package "<%= name %>" {
-component component1
-component component2
-interface i1
+package "<%= nameSpaces %>" #lightblue {
+  interface CLI
+  interface Web
+  interface REST
+  folder bin #ffffff {
+    component binName
+  }
 
+  folder appName #ffffff {
+    component sails.io
+    component sailsjs
+  }
+
+  folder uService1 #ffffff {
+    component micro
+  }
 }
-i1 - component1
-component1 --> component2
+
+CLI -- binName
+binName --  REST
+
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+Web -- sails.io
+REST -- micro
+
 @enduml

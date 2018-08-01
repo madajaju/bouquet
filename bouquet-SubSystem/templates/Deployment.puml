@@ -1,12 +1,25 @@
 @startuml
 
-package  "<%= name %>" {
-  cloud cloud1
-  node node1
-  artifact artifact1
-  storage objectStore
-  database db1
-  folder folder1
+package  "<%= nameSpaces %>"  #lightblue {
+  folder bin #ffffff {
+    file binName
+  }
+
+  folder Services #ffffff {
+    file uservice
+  }
+
+  node micro
+
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
 }
 
 @enduml

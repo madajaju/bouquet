@@ -13,33 +13,30 @@ let client = new Client();
 // BEGIN: Dynamic Mapping based on Controller Action
 const action = require('../api/controllers/<%= controller %>/<%= action %>');
 program.description(action.description);
-_.each(Object.keys(action.inputs), function(key) {
-    if(key != "mode") { // Used to force json output instead of html
-        program.option('-' + key[0] + ", --" + key + " <" + action.inputs[key].type + ">", action.inputs[key].description);
+for(key in action.inputs) {
+    if(key != 'mode') { // Used to force json output instead of html
+        program.option('-' + key[0] + ', --' + key + ' <' + action.inputs[key].type + '>', action.inputs[key].description);
     }
-});
-// END: Dynamic Mapping based on Controller Action
+};
 
 program.parse(process.argv);
 
-var url = config.Url + "/<%= controller %>/<%= action %>?";
+var url = config.Url + '/<%= controller %>/<%= action %>?';
+url += '&mode=json';
 
-
-/* Get the arguments passed on the command line and put them in a URL.
-if (name) {
-  url += "name=" + name[0];
+for(key in action.inputs) {
+  if(program[key]) { url += '&' + key + '=' + program[key]; }
 }
-if (program.stack) {
-  url += "&stack=" + program.stack;
-}
-*/
+// END: Dynamic Mapping based on Controller Action
 
 client.get(url, function (data, response) {
   // parsed response body as js object
   if (data.error) {
-    console.error("Error:" + data.error);
+    console.error('Error:' + data.error);
   }
   else {
+
   // Process the data returned.
+  console.log(data);
   }
 });

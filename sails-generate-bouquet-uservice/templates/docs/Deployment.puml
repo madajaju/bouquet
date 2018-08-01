@@ -1,8 +1,9 @@
 @startuml
 
 interface external
+control trigger
 
-package  "<%= name %>" {
+package  "<%= name %>" #lightblue {
   interface internal
   node service
   folder image
@@ -11,4 +12,10 @@ service -- image
 external -- service : 3000
 internal -- service : 5000
 
+trigger --> service : 1
+note left of trigger
+condition: always
+scale: thru-put
+cardinality: 1
+end note
 @enduml

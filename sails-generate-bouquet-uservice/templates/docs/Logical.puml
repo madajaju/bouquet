@@ -1,6 +1,6 @@
 @startuml
 
-package "<%= name %>" {
+package "<%= name %>" #lightblue {
     interface "<%= name %>" {
 
     }

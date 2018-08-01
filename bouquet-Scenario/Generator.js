@@ -68,14 +68,26 @@ module.exports = {
     });
 
     // Decide the output filename for use in targets below:
-    scope.name = scope.args[1];
-    scope.name = scope.name.replace(/\s/g, "-");
+    scope.nameSpaces = scope.args[1];
+    scope.name = scope.nameSpaces.replace(/\s/g, "-");
     scope.readme = "Scenario-" + scope.name + ".rst";
-    scope.usecase = scope.args[0];
-    scope.usecase = scope.usecase.replace(/\s/g, "-");
+    scope.usecaseSpaces = scope.args[0];
+    scope.usecase = scope.usecaseSpaces.replace(/\s/g, "-");
     scope.testName = scope.usecase + "_" + scope.name + ".test.js";
     scope.systemName = package.name;
     scope.diagramName = scope.name + ".puml";
+    scope.diagramNameWeb = scope.name + "Web.puml";
+    if(scope.args[2] && scope.args[3]) {
+      scope.binNameSpaces = scope.systemName + ' ' + scope.args[2] + ' ' + scope.args[3];
+      scope.binName = scope.systemName + '-' + scope.args[2] + '-' + scope.args[3];
+      scope.restName = scope.args[2] + '/' + scope.args[3];
+    }
+    else {
+      var names = scope.nameSpaces.split(/\s/);
+      scope.binNameSpaces = scope.systemName + ' ' + names[1].toLowerCase() + ' ' + names[0].toLowerCase();
+      scope.binName = scope.systemName + '-' + names[1].toLowerCase() + '-' + names[0].toLowerCase();
+      scope.restName = names[1].toLowerCase() + '/' + names[0].toLowerCase();
+    }
 
     // When finished, we trigger a callback with no error
     // to begin generating files/folders as specified by
@@ -91,7 +103,6 @@ module.exports = {
    */
 
   targets: {
-
     // Usage:
     // './path/to/destination.foo': { someHelper: opts }
 
@@ -103,12 +114,12 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     './test/UseCases/:testName': { template: 'usecase.test.js' },
     './docs/UseCases/:usecase/:diagramName': { template: 'ScenarioName.puml' },
+    './docs/UseCases/:usecase/:diagramNameWeb': { template: 'ScenarioWebInterface.puml' },
     './docs/UseCases/:usecase/:readme': { template: 'index.rst' },
 
     // Creates a folder at a static path
     // './test/UseCases': { folder: { force: true} },
     // './design/UseCases/:name': { folder: { force: true} }
-
   },
 
 

@@ -1,18 +1,22 @@
 @startuml
 
-partition "<%= name %>" {
+partition "<%= nameSpaces %>" {
 
 }
 
-partition SubSystem  #cccccc {
+partition User  #cccccc {
   (*) --> "Create Project"
   --> "Write Code"
 }
 
-partition "<%= name %>" {
+partition "<%= nameSpaces %>" #lightblue {
   "Write Code" --> "Test Code"
   "Test Code" --> "Deploy Code"
   "Deploy Code" --> (*)
+}
+
+partition Used #cccccc {
+  "Test Code" --> "Do Something"
 }
 
 @enduml

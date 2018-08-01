@@ -1,8 +1,8 @@
 var Promise = require('bluebird');
 
-describe('Use Case <%= usecase %>', function () {
-  describe('<%= name %> Scenario', function () {
-    it('<%= name %> Primary Test', function (done) {
+describe('Use Case <%= usecase %>', () => {
+  describe('<%= name %> Scenario', () => {
+    it('<%= name %> Primary Test', (done) => {
        done();
     });
   });
