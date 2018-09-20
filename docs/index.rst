@@ -2,10 +2,16 @@ Bouquet
 =======
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Overview
+  :maxdepth: 1
+  :caption: Overview
 
-   Solution/Solution
+  Home
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Solutions
+
+   Solution/index
 
 .. toctree::
    :maxdepth: 2
@@ -18,10 +24,4 @@ Bouquet
    :caption: Use Cases
 
    UseCases/index
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Solution
-
-   Solution/index
 

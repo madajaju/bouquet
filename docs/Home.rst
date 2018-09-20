@@ -1,3 +1,5 @@
+.. _Home:
+
 bouquet Introduction
 ====================
 
@@ -14,10 +16,10 @@ bouquet with the latest technologies.
 
 These are the technologies that I am leveraging this time.
 
-* PlantUML - Textual way of describing UML diagrams (*.puml)
+* PlantUML - Textual way of describing UML diagrams <filename>.puml
 * SailsJS - MVC framework for NodeJS development
 * Commander - npm module for command line programming for NodeJS
-* rst  - ReStructureText language for documenting the Architecture. (*.rst)
+* rst  - ReStructureText language for documenting the Architecture. <filename>.rst
 
 
 The tools by themselves are very useful. Bringing all the tools together is where I found the most benefit.
@@ -27,7 +29,8 @@ PlantUML
 
 PlantUML is a component that lets you quickly write several UML diagrams using Text instead of a drawing tool. It is great for many but not all of the UML diagrams. I have found that it covers everything that I typically need to do for Architectures of systems. UseCase, Component, Class, Deployment, Scenarios, and Activity Diagrams.
 
-One of the benefits of using PlantUML that the text files that your create (*.puml) can be checked in to GitHub. You can also generate image files (png) from the text files (puml) and check in the image files as well. I do this so my design documents in GitHub (Markdown language is used) can reference the images that have been generated. Generating the image (png) files is as easy as typing in a command line.
+One of the benefits of using PlantUML that the text files that your create .puml can be checked in to GitHub. You can also generate image files (png) from the text files (puml) and check in the image files as well. I do this so my design documents in GitHub (Markdown language is used) can reference the images that have been generated. Generating the image (png) files is as easy as typing in a command line.
+
 .. code-block:: none
 
     # java -f design/plantuml.jar myDiagram.puml
@@ -185,6 +188,7 @@ There should be one system command that contains all of the commands for the sys
 * The for each actor there should be a command for the actor. This will give a command line interface for each actor
 * There should be a command for each subsystem as well. This will give the ability for each subsystem to have a CLI.
 * There should be a command for each of the top level scenarios for the system.
+
 The following is an example of this top level command file
 
 In this case "caade"
@@ -282,15 +286,15 @@ In this case "caade-cloud"
 
 .. code-block:: javascript
 
-#!/usr/bin/env node
-var program = require('commander');
-program
-  .version("0.2.0")
-  .command('create <cloudName>', 'Attach a Cloud')
-  .command('ls', 'List the Clouds attached')
-  .command('remove <cloudName>', 'Remove a Cloud')
-  .command('show <cloudName>', 'Show details about a Cloud')
-  .parse(process.argv);
+    #!/usr/bin/env node
+    var program = require('commander');
+    program
+      .version("0.2.0")
+      .command('create <cloudName>', 'Attach a Cloud')
+      .command('ls', 'List the Clouds attached')
+      .command('remove <cloudName>', 'Remove a Cloud')
+      .command('show <cloudName>', 'Show details about a Cloud')
+      .parse(process.argv);
 
 
 Command Script
@@ -394,6 +398,7 @@ Another thing that I found useful was having the ability to include the ability 
 user to add a file as an argument to the CLI. This is good for passing in yaml or json files
 that can be passed into the Controller.
 In this case I am passing in a yaml file.
+
 .. code-block:: javascript
 
     #!/usr/bin/env node
@@ -443,6 +448,7 @@ Pattern
 1. An action is created for a specific controller.
 2. And a cooresponding binary is created to access the action.
 3. Finally a test set of test cases is created for the action.
+
 .. code-block:: none
 
     * api
