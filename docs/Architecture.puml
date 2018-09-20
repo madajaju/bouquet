@@ -2,18 +2,24 @@
 
 skinparam packageStyle rect
 
-package bouquet {
-package "SubSystem1" #aaffff {
+package bouquet #lightgray {
+    package "Action" #lightgreen {
+    }
+    package "Actor" #lightblue {
+    }
+    package "Bin" #lightgreen {
+    }
+    package "Micro-Service" #lightgreen {
+    }
+    package "SubSystem" #lightblue {
+    }
+    package "Test" #lightgreen {
+    }
+    package "UseCase" #lightblue {
+    }
+    package "Scenario" #lightblue {
+    }
 }
-package "SubSystem2" #aaffaa {
-}
-package "SubSystem3" #ffaaaa {
-}
-}
-
-SubSystem1 --> SubSystem2
-SubSystem2 --> SubSystem3
-
 
 @enduml
 

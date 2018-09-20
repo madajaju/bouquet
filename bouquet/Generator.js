@@ -40,17 +40,39 @@ module.exports = {
     // $ sails generate bouquet user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
     // Make sure we're in the root of a Sails project.
-    var pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
-    var package, invalidPackageJSON;
+    let pathToPackageJSON = path.resolve(scope.rootPath, 'package.json');
+    let package, invalidPackageJSON;
     try {
       package = require(pathToPackageJSON);
-    } catch (e) {
-      invalidPackageJSON = true;
+    }
+    catch (e) {
+      return cb.invalid('Sorry, This must be run in the project root');
     }
 
-    if (invalidPackageJSON) {
-      return cb.invalid('Sorry, this command can only be used in the root directory of a Sails project.');
+    let pathToNewPackageJSON = path.resolve(__dirname, './templates/package.json');
+    console.log(pathToNewPackageJSON);
+    let newPackage;
+    try {
+      newPackage = require(pathToNewPackageJSON);
     }
+    catch (e) {
+      console.error("Error:", e);
+      return cb.invalid('Sorry, cannot find the new package.json file');
+    }
+
+    // Merge the two packages.
+    for(let item in newPackage) {
+      for(let item2 in newPackage[item]) {
+        if (package[item].hasOwnProperty(item2)) {
+          package[item][item2] = newPackage[item][item2];
+        }
+        else {
+          package[item][item2] = newPackage[item][item2];
+        }
+      }
+    }
+    console.log(package);
+
     // scope.rootPath is the base path for this generator
     //
     // e.g. if this generator specified the target:
@@ -59,7 +81,7 @@ module.exports = {
     // And someone ran this generator from `/Users/dbowie/sailsStuff`,
     // then `/Users/dbowie/sailsStuff/Foobar.md` would be created.
     if (!scope.rootPath) {
-      return cb( INVALID_SCOPE_VARIABLE('rootPath') );
+      return cb(INVALID_SCOPE_VARIABLE('rootPath'));
     }
 
 
@@ -81,7 +103,6 @@ module.exports = {
   },
 
 
-
   /**
    * The files/folders to generate.
    * @type {Object}
@@ -101,23 +122,24 @@ module.exports = {
     // './:filename': { template: 'example.template.js' },
 
     // Creates a folder at a static path
-    './bin/:name': { template: 'bin/systemName' },
-    './Jenkinsfile': { template: 'Jenkinsfile' },
-    './docs/conf.py': { template: 'docs/conf.py' },
-    './docs/plantuml.jar': { copy: 'docs/plantuml.jar' },
-    './package.json.new': { template: 'package.json' },
-    './docs/Home.rst': { template: 'docs/Home.rst' },
-    './docs/index.rst': { template: 'docs/index.rst' },
-    './docs/Architecture.puml': { template: 'docs/Logical.puml' },
-    './docs/Solution/Solution.rst': { template: 'docs/Solution/Solution.rst' },
-    './docs/Solution/index.rst': { template: 'docs/Solution/index.rst' },
-    './docs/Solution/Deployment.puml': { template: 'docs/Solution/Deployment.puml' },
-    './docs/Solution/Logical.puml': { template: 'docs/Solution/Logical.puml' },
-    './docs/Solution/Physical.puml': { template: 'docs/Solution/Physical.puml' },
-    './docs/Solution/Process.puml': { template: 'docs/Solution/Process.puml' },
-    './docs/UseCases/index.rst': { template: 'docs/UseCases/index.rst' },
-    './docs/UseCases/UseCases.puml': { template: 'docs/UseCases/UseCases.puml' },
-    './docs/Actors/index.rst': { template: 'docs/Actors/index.rst' }
+    './bin/:name': {template: 'bin/systemName'},
+    './Jenkinsfile': {template: 'Jenkinsfile'},
+    './docs/conf.py': {template: 'docs/conf.py'},
+    './docs/plantuml.jar': {copy: 'docs/plantuml.jar'},
+    './package.json.new': {template: 'package.json'},
+    './deploy/build-doc.js': {copy: 'build-doc.js'},
+    './docs/Home.rst': {template: 'docs/Home.rst'},
+    './docs/index.rst': {template: 'docs/index.rst'},
+    './docs/Architecture.puml': {template: 'docs/Logical.puml'},
+    './docs/Solution/Solution.rst': {template: 'docs/Solution/Solution.rst'},
+    './docs/Solution/index.rst': {template: 'docs/Solution/index.rst'},
+    './docs/Solution/Deployment.puml': {template: 'docs/Solution/Deployment.puml'},
+    './docs/Solution/Logical.puml': {template: 'docs/Solution/Logical.puml'},
+    './docs/Solution/Physical.puml': {template: 'docs/Solution/Physical.puml'},
+    './docs/Solution/Process.puml': {template: 'docs/Solution/Process.puml'},
+    './docs/UseCases/index.rst': {template: 'docs/UseCases/index.rst'},
+    './docs/UseCases/UseCases.puml': {template: 'docs/UseCases/UseCases.puml'},
+    './docs/Actors/index.rst': {template: 'docs/Actors/index.rst'}
   },
 
 
@@ -129,9 +151,6 @@ module.exports = {
    */
   templatesDirectory: require('path').resolve(__dirname, './templates')
 };
-
-
-
 
 
 /**
@@ -148,14 +167,14 @@ module.exports = {
  * @api private
  */
 
-function INVALID_SCOPE_VARIABLE (varname, details, message) {
+function INVALID_SCOPE_VARIABLE(varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "bouquet":\n'+
-  'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-bouquet`, please resolve this '+
-  'issue and publish a new patch release.';
+    'Issue encountered in generator "bouquet":\n' +
+    'Missing required scope variable: `%s`"\n' +
+    'If you are the author of `sails-generate-bouquet`, please resolve this ' +
+    'issue and publish a new patch release.';
 
-  message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');
+  message = (message || DEFAULT_MESSAGE) + (details ? '\n' + details : '');
   message = util.inspect(message, varname);
 
   return new Error(message);

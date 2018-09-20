@@ -26,9 +26,9 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "build": "node ./deploy/build",
     "start": "node app.js",
-    "publish-all": "cd bouquet && npm publish && cd ../bouquet-Actor && npm publish && cd ../bouquet-Scenario && npm publish && cd ../bouquet-SubSystem && npm publish && cd ../bouquet-UseCase && npm publish && cd ../sails-generate-bouquet-action && npm publish && cd ../sails-generate-bouquest-uservice && npm publish"
+    "build-doc": "npm run design && node ./docs/build-doc",
+    "publish-all": "cd bouquet && npm publish && cd ../bouquet-Actor && npm publish && cd ../bouquet-Scenario && npm publish && cd ../bouquet-SubSystem && npm publish && cd ../bouquet-UseCase && npm publish && cd ../sails-generate-bouquet-action && npm publish && cd ../sails-generate-bouquest-uservice && npm publish",
     "design": "java -jar docs/plantuml.jar docs/*.puml docs/**/*.puml"
   },
   "main": "app.js",

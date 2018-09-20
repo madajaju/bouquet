@@ -14,10 +14,10 @@ bouquet with the latest technologies.
 
 These are the technologies that I am leveraging this time.
 
-* PlantUML - Textual way of describing UML diagrams
+* PlantUML - Textual way of describing UML diagrams (*.puml)
 * SailsJS - MVC framework for NodeJS development
 * Commander - npm module for command line programming for NodeJS
-* rst  - Markdown language for projects in GitHub.
+* rst  - ReStructureText language for documenting the Architecture. (*.rst)
 
 
 The tools by themselves are very useful. Bringing all the tools together is where I found the most benefit.
@@ -33,6 +33,7 @@ One of the benefits of using PlantUML that the text files that your create (*.pu
     # java -f design/plantuml.jar myDiagram.puml
 
 Because I am using NodeJS. I can use a npm script command to actually generate all of the my images. Basically I put another target in my package.json file in the root directory that searches all of my design directories and generates the png files.
+
 .. code-block:: none
 
   "scripts": {
@@ -81,34 +82,80 @@ I added two additional directories to the top level (bin, design, and test). Nex
 subdirectories in the design directory as shown below.
 
 * api - Standard SailsJS directory
+
     * controllers - Standard SailsJS Controllers for the project.
     * models - Standard SailsJS Model for the project.
+
 * assets - Standard SailsJS Directory
-* **bin** - Contains commander binaries
+* bin - Contains commander binaries
 * config - Stanard SailsJS Directory
-* **docs** - Contains Architecture and Design of the system
+* docs - Contains Architecture and Design of the system
+
     * Actors - Actors of the system
-        * Actors.md - ReadMe for all of the Actors
+
+        * index.rst - index file for all of the Actors.
         * < Actor Name > - Directory for each Actor of the system
-          * Actor-< Actor Name >.md - Readme for the actor.
+
+          * Actor-< Actor Name >.rst - Readme for the actor.
+          * Activity.puml - Activity diagram for the Actor.
+          * UseCases.puml - Use Case diagram for the Actor.
+          * Workflow.puml - Workflow diagram for the Actor.
+
     * UseCases - Use Cases of the system
-        * UseCases.md - ReadMe file for all of the UseCases
+
+        * index.rst - index file for all of the Use Cases.
         * UseCases.puml - PlantUML file for all of the Use Cases and Actors
         * < UseCase Name > - Directory for each Use Case of the system
-          * UseCase-<UseCase Name> - Readme for the Use Case.
+
+          * Activities.puml - Activity diagram of the scenarios for the Use Case.
+          * UseCase-<UseCase Name>.rst - Readme for the Use Case.
+          * Scenario-<Scenario Name>.rst - Readme for the Scenario of the Use Case.
+          * <Scenario Name>.puml - User Interaction of the Scenario with the System.
+          * <Scenario Name>Web.puml - User Interface of the Sceniaro with the System.
+
     * Solution - System Components
-        * Solution.md - ReadMe for all of the sub-systems
-        * < Sub System Name > - Directory for each sub system.
-          * SubSystem-< Sub System Name >.md - Description of the Sub-System
-    * README.md - Top ReadMe for the Architecture and Design
+
+        * Solution.rst - ReadMe for all of the sub-systems
+        * Deployment.puml - Deployment Diagram for the System.
+        * Logical.puml - Logical Diagram for the System.
+        * Physical.puml - Physical layout Diagram for the System.
+        * Process.puml - Process Diagram for the System.
+        * Process.puml - Process Diagram for the System.
+        * Services - Documentation for micro-Services.
+
+          * <Service Name> - Directory of the Service Name
+
+            * Deployment.puml - Deployment diagram for the Service.
+            * Logical.puml - Logical diagram for the Service.
+            * Physical.puml - Physical diagram for the Service.
+            * Process.puml - Process diagram for the Service.
+            * UseCases.puml - Use Case diagram for the Service.
+            * UserInteraction.puml - User Interaction diagram for the Service.
+
+        * <Sub System Name> - Directory for each sub system.
+
+          * SubSystem-<Sub System Name>.rst - Description of the Sub-System
+          * Deployment.puml - Deployment diagram for the SubSystem.
+          * Logical.puml - Logical diagram for the SubSystem.
+          * Physical.puml - Physical Layout diagram for the SubSystem.
+          * Process.puml - Process diagram for the SubSystem.
+          * UseCases.puml - Use Case diagram for the SubSystem.
+          * UserInteraction.puml - User Interaction diagram for the SubSystem.
+
+    * Home.rst - Top ReadMe for the Architecture and Design
+    * index.rst - Top level index file to include everything in the book.
     * Architecture.puml - Top level architecture plantUML diagram
-    * plantuml.####.jar - plantUML jar file used to generate png files.
+    * conf.py - Sphynix Config file for pdf and html generation.
+    * plantuml.jar - plantUML jar file used to generate png files.
+
 * tasks - Standard SailsJS Directory
-* **test** - Contains test for the system.
+* test - Contains test for the system.
+
     * bin - Test the CLI
     * Actors - Test the Actor interactions One Test Suite per Actor with each use case
     * UseCases - Test the Scenarios as described. One Test Suite per Scenario with tests for each different path through the scenario
     * System - Test of each subsystem. One Test Suite for each SubSystem, a test for each of the interface calls.
+
 * views - Stand SailsJS Directory
 
 
@@ -194,7 +241,6 @@ The Controller for this might look something like this AppController.js
 .. code-block:: javascript
 
     module.exports = {
-
       create: function (req, res) {
         var name = "";  // Default
         var stackName = "";  // Default
@@ -226,17 +272,18 @@ The Controller for this might look something like this AppController.js
       kill: function (req, res) { ... }
     };
 
-#### Subsytem Command Script
+Subsytem Command Script
+~~~~~~~~~~~~~~~~~~~~~~~
+
 This is very much like the Top level command script but limits the commands to the subsystem
 The file is named "projectName-subsystemName" a simple example follows.
 
 In this case "caade-cloud"
 
-```javascript
+.. code-block:: javascript
+
 #!/usr/bin/env node
-
 var program = require('commander');
-
 program
   .version("0.2.0")
   .command('create <cloudName>', 'Attach a Cloud')
@@ -245,9 +292,10 @@ program
   .command('show <cloudName>', 'Show details about a Cloud')
   .parse(process.argv);
 
-```
 
-#### Command Script
+Command Script
+~~~~~~~~~~~~~~
+
 Command scripts are where everything really happens. The previous scripts just setup for accessing the
 command scripts. The naming convention of the command scripts follows the actor and subsystem nomenclature
 "projectName-actorName-command", "projectName-subsystemName-command", or "projectName-command".
@@ -258,182 +306,168 @@ be a cooresponding controller for the actor. This way the REST and CLI APIs are 
 
 Here is an example of a project (caade) that has three actors (dev, ops, admin) and two subsystems (stack, policy).
 The following commands would be available
-```
-# caade dev
-# caade ops
-# caade admin
-# caade stack
-# caade policy
-```
+
+.. code-block:: none
+
+    ```
+    # caade dev
+    # caade ops
+    # caade admin
+    # caade stack
+    # caade policy
 
 The top level command file "bin/caade" will look something like this
 
-```javascript
-#!/usr/bin/env node
+.. code-block:: javascript
 
-var program =  require('commander');
+    #!/usr/bin/env node
+    var program =  require('commander');
+    program
+      .version("0.1.0")
+      .command('dev <command>', 'Developer Commands')
+      .command('ops <command>', 'Operators Commands')
+      .command('admin <command>', 'Admin Commands')
+      .command('stack <command>', 'Stack Manager Commands')
+      .command('policy <command>', 'Policy Manager Commands')
+      .parse(process.argv);
 
-program
-  .version("0.1.0")
-  .command('dev <command>', 'Developer Commands')
-  .command('ops <command>', 'Operators Commands')
-  .command('admin <command>', 'Admin Commands')
-  .command('stack <command>', 'Stack Manager Commands')
-  .command('policy <command>', 'Policy Manager Commands')
-  .parse(process.argv);
-
-```
 
 Each subsequent actor or subsystem commands would have a file that would contain something similar to the following
-```javascript
-#!/usr/bin/env node
 
-var program =  require('commander');
+.. code-block:: javascript
 
-program
-  .version("0.1.0")
-  .command('create <name>', 'Developer Create')
-  .command('delete <name>', 'Developer Delete')
-  .command('ls', 'List Developers')
-  .parse(process.argv);
-```
+    #!/usr/bin/env node
+    var program =  require('commander');
+    program
+      .version("0.1.0")
+      .command('create <name>', 'Developer Create')
+      .command('delete <name>', 'Developer Delete')
+      .command('ls', 'List Developers')
+      .parse(process.argv);
+
 
 Now each one of the commands for the actor or subsystem will have its own file with the names as follows
-```
-# caade-dev-create
-# caade-dev-delete
-# caade-dev-ls
-```
+
+.. code-block:: none
+
+    # caade-dev-create
+    # caade-dev-delete
+    # caade-dev-ls
 
 Each one of the command scripts will access the rest interface or process some things directory in the command shell.
 The following is an example of a simple Command Script that accesses the rest interface.
 In this case it shows information about a stack in the system
 
-```javascript
-#!/usr/bin/env node
+.. code-block:: javascript
 
-var program = require('commander');
-var Client = require('node-rest-client').Client; // Needed to access the REST Interfacce.
-var config = require('./system-config'); // Contains the URL to connect to for the REST Interface
-var _ = require('lodash');
-
-var client = new Client();
-
-program
-  .option('-v, --version <versionNumber>', 'Show an application stack with version')
-  .parse(process.argv);
-
-var name = program.args;
-
-// Create the REST Command
-var url = config.caadeUrl + "/stack/show?";
-
-if(name) {
-  url += "name=" + name[0];
-}
-
-if (program.version) {
-  url += "&version=" + program.version;
-}
-// Call the REST Interface via HTTP Client.
-client.get(url, function (data, response) {
-  // parsed response body as js object
-  if(data.error) {
-    console.error(data.error);
-  }
-  else {
-    console.log(data.stack);
-    console.log("Name:" + data.stack.name + "\tVersion: " + data.stack.version);
-  }
-});
-
-```
+    #!/usr/bin/env node
+    var program = require('commander');
+    var Client = require('node-rest-client').Client; // Needed to access the REST Interfacce.
+    var config = require('./system-config'); // Contains the URL to connect to for the REST Interface
+    var _ = require('lodash');
+    var client = new Client();
+    program
+      .option('-v, --version <versionNumber>', 'Show an application stack with version')
+      .parse(process.argv);
+    var name = program.args;
+    // Create the REST Command
+    var url = config.caadeUrl + "/stack/show?";
+    if(name) {
+      url += "name=" + name[0];
+    }
+    if (program.version) {
+      url += "&version=" + program.version;
+    }
+    // Call the REST Interface via HTTP Client.
+    client.get(url, function (data, response) {
+      // parsed response body as js object
+      if(data.error) {
+        console.error(data.error);
+      }
+      else {
+        console.log(data.stack);
+        console.log("Name:" + data.stack.name + "\tVersion: " + data.stack.version);
+      }
+    });
 
 Another thing that I found useful was having the ability to include the ability to allow the
 user to add a file as an argument to the CLI. This is good for passing in yaml or json files
 that can be passed into the Controller.
 In this case I am passing in a yaml file.
-```javascript
-#!/usr/bin/env node
+.. code-block:: javascript
 
-var program = require('commander');
-var Client = require('node-rest-client').Client; // Access the REST interface
-var config = require('./caade-config');
-var YAML = require('yamljs'); // Parse a YAML file
+    #!/usr/bin/env node
+    var program = require('commander');
+    var Client = require('node-rest-client').Client; // Access the REST interface
+    var config = require('./caade-config');
+    var YAML = require('yamljs'); // Parse a YAML file
+    var client = new Client();
+    program
+      .option('-f, --filename <filename>', 'Create an application stack from file')
+      .option('-e, --env <environmentName>', 'Create an application stack for the environment')
+      .parse(process.argv);
+    var name = program.args;
+    var url = config.caadeUrl + "/stack/create";
+    // Taking a YAMLfile and converting to JSON and then passing it into the REST interface.
+    var args = { headers: {"Content-Type": "application/json"}, data: {} }
+    if(name) {
+      args.data.name = name[0];
+    }
+    var definition = {};
+    // Load the YAML file from the local drive and convert it to JSON.
+    if (program.filename) {
+      args.data.definition = YAML.load(program.filename);
+    }
+    if (program.env) {
+      args.data.env = program.env;
+    }
+    client.post(url, args, function (data, response) {
+      // parsed response body as js object
+      if(data.error) {
+        console.error(data.error);
+      }
+      else {
+        console.log("Stack " + data.stack.name + " has been created for environment " + program.env);
+      }
+    });
 
-var client = new Client();
-
-program
-  .option('-f, --filename <filename>', 'Create an application stack from file')
-  .option('-e, --env <environmentName>', 'Create an application stack for the environment')
-  .parse(process.argv);
-
-var name = program.args;
-
-var url = config.caadeUrl + "/stack/create";
-// Taking a YAMLfile and converting to JSON and then passing it into the REST interface.
-var args = { headers: {"Content-Type": "application/json"}, data: {} }
-
-if(name) {
-  args.data.name = name[0];
-}
-
-var definition = {};
-// Load the YAML file from the local drive and convert it to JSON.
-if (program.filename) {
-  args.data.definition = YAML.load(program.filename);
-}
-
-if (program.env) {
-  args.data.env = program.env;
-}
-
-client.post(url, args, function (data, response) {
-  // parsed response body as js object
-  if(data.error) {
-    console.error(data.error);
-  }
-  else {
-    console.log("Stack " + data.stack.name + " has been created for environment " + program.env);
-  }
-});
-```
-
-
-## Actions
+Actions
+-------
 I recently (Nov 2017) extended bouquet to handle the creation of Actions for Controllers.
 The concept behind this is to auto generate tests, command line interface and controllers
 for the actions created.
 
-### Pattern
+Pattern
+~~~~~~~
 
 1. An action is created for a specific controller.
-1. And a cooresponding binary is created to access the action.
-1. Finally a test set of test cases is created for the action.
-```
-* api
-  * controllers
-    * <controller-name>
-       * <action-name>.js
-* bin
-  * <controller-name>-<action-name>
-* test
-  * bin
-    * <controller-name>-<action-name>.test.js
-  * integration
-    * <controller-name>-<action-name>.test.js
-```
+2. And a cooresponding binary is created to access the action.
+3. Finally a test set of test cases is created for the action.
+.. code-block:: none
 
-### Usage
+    * api
+      * controllers
+        * <controller-name>
+           * <action-name>.js
+    * bin
+      * <controller-name>-<action-name>
+    * test
+      * bin
+        * <controller-name>-<action-name>.test.js
+      * integration
+        * <controller-name>-<action-name>.test.js
 
-```bash
-$ sails generate bouquet-Action <controller> <action>
-```
+Usage
+~~~~~
+
+.. code-block:: none
+
+    $ sails generate bouquet-Action <controller> <action>
 
 
-##Future
+Future
+------
+
 I know as I start using this I will add more generated artifacts to the system. So if you have any ideas please
 let me know. You can find more at the github project
-
-
 
