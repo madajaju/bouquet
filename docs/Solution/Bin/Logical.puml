@@ -1,14 +1,14 @@
 @startuml
-
-package "Bin" {
-    interface "Bin" {
-
-    }
-    CLI ()-- "Bin"
-    REST ()-- "Bin"
-    Web ()-- "Bin"
-
+rectangle parameters #lightgreen {
+    rectangle name
+    rectangle command
+    name .. command
 }
 
+rectangle Action #lightblue {
+  folder bin #white {
+    artifact "<system>-<name>-<command>"
+  }
+}
 
 @enduml

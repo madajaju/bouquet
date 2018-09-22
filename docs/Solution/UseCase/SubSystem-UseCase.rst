@@ -1,55 +1,35 @@
 .. _SubSystem-UseCase:
 
 UseCase
-============
+=======
 
-UseCase is a subsystem of bouquet ...
+UseCase is a subsystem of bouquet pattern generator.
 
-Use Cases
----------
+Command Line Interface
+----------------------
 
-*
+.. code-block:: none
 
-.. image:: UseCases.png
+  # sails generate bouquet-UseCase <Name>
 
-Users
------
+Gnerated Artifacts
+------------------
 
-* :ref:`Actor-User`
+* docs
 
-.. image:: UserInteraction.png
+  * UseCases
 
-Uses
-----
+    * <Name>
 
-* :ref:`UseCase`
+      * Activities.puml
+      * index.rst
 
-Interface
----------
+* test
 
-* CLI - Command Line Interface
-* REST-API -
-* Portal - Web Portal
+  * UseCases
 
-Logical Artifacts
------------------
-
-*
+    * <Name>.test.js
 
 .. image:: Logical.png
 
-Activities and Flows
---------------------
-
-.. image::  Process.png
-
-Deployment Architecture
------------------------
-
-.. image:: Deployment.png
-
-Physical Architecture
----------------------
-
-.. image:: Physical.png
 

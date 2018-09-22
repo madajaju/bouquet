@@ -11,14 +11,3 @@ These are the high level Subsystems of the bouquet Solution
 
     **/SubSystem*
 
-Implementations
----------------
-
-These are implementations of the architecture
-
-.. toctree::
-    :glob:
-    :maxdepth: 1
-
-    Solution*
-

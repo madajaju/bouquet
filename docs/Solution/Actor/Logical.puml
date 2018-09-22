@@ -1,14 +1,35 @@
 @startuml
 
-package "Actor" {
-    interface "Actor" {
-
-    }
-    CLI ()-- "Actor"
-    REST ()-- "Actor"
-    Web ()-- "Actor"
-
+rectangle parameters $lightgreen {
+    rectangle name
+    rectangle nickname
+    name .. nickname
 }
 
+rectangle Action #lightblue {
+  folder docs #white {
+    folder "<name>" #lightgreen {
+      artifact Activity.puml
+      artifact "Actor-<name>.rst"
+      artifact UseCases.puml
+      artifact Workflow.puml
+    }
+  }
+  folder api #white {
+    folder controllers {
+      artifact "<name>.js"
+    }
+  }
+  folder bin #white {
+    artifact "<system>-<name>"
+  }
+  folder test #white {
+    folder Actors #lightgreen {
+      artifact "<name>.test.js"
+    }
+  }
+  bin .. controllers
+  controllers .. test
+}
 
 @enduml

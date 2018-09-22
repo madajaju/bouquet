@@ -22,11 +22,74 @@ The convention that I have chosen is Docker, and "micro" nodejs for the developm
 As a result a standard Dockerfile is created and a simple index.js file is created following standard micro examples.
 Lastly a package.json file is created to help automate the building and deploying of the microservice.
 
-.. image:: DeployArtifacts.png
+For all of the micro services the following will be generateed once.
 
-The documentation of the micro-services follows the other bouquet documentation conventions. Bouquet puts micro-service
-documentation into the Solution directory under a Services directory. Each new micro-service has its own directory and
-populates it with some uml files and a standard template for documentation.
+* docs
 
-.. image:: DocArtifacts.png
+  * Solution
+
+    * Services
+
+      * index.rst
+
+* deploy
+
+  * build.js
+
+  * dev
+
+    * docker-compose.yaml
+
+  * test
+
+    * docker-compose.yaml
+
+  * production
+
+    * docker-compose.yaml
+
+  * build
+
+    docker-compose.yaml
+
+  * uservices
+
+    * web
+
+      * Dockerfile
+      * index.js
+      * package.json
+
+
+For each micro service the following will be generated.
+
+* deploy
+
+  * uservices
+
+    * "<name>"
+
+      * Dockerfile
+      * index.js
+      * package.json
+
+* docs
+
+  * Solution
+
+    * Services
+
+      * "<name>"
+
+        * "Service-<name>.rst"
+        * "UseCase.puml"
+        * "UserInteraction.puml"
+        * "Logical.puml"
+        * "Deployment.puml"
+        * "Physical.puml"
+        * "Process.puml"
+        * "package.json"
+
+
+.. image:: Logical.png
 

@@ -1,6 +1,0 @@
-@startuml
-actor User
-
-User -> "Micro-Service": UseCase
-
-@enduml

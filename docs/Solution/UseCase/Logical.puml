@@ -1,13 +1,35 @@
 @startuml
-
-package "UseCase" {
-    interface "UseCase" {
-
+rectangle "SubSystem" #lightblue {
+    folder docs #white {
+      folder Solution #lightgreen {
+        folder <Name> #white {
+          artifact index.rst
+          artifact "UseCase.puml"
+          artifact "UserInteraction.puml"
+          artifact "Logical.puml"
+          artifact "Deployment.puml"
+          artifact "Physical.puml"
+          artifact "Process.puml"
+          folder <Name2> #lightgreen {
+              artifact index.rst as 2i
+              artifact "UseCase.puml" as 2u
+              artifact "UserInteraction.puml" as 2ui
+              artifact "Logical.puml" as 2l
+              artifact "Deployment.puml" as 2d
+              artifact "Physical.puml" as 2f
+              artifact "Process.puml" as 2p
+            }
+        }
+      }
     }
-    CLI ()-- "UseCase"
-    REST ()-- "UseCase"
-    Web ()-- "UseCase"
 
+    folder test #white {
+      folder Solution as ts #lightblue {
+        artifact "<Name>-test.js" #white
+        artifact "<Name>-<Name2>-test.js" #white
+      }
+    }
+    test .. docs
 }
 
 

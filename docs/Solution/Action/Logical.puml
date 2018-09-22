@@ -1,13 +1,33 @@
 @startuml
 
-package "Action" {
-    interface "Action" {
+rectangle parameters $lightgreen {
+    rectangle controller
+    rectangle action
+    controller .. action
+}
+
+rectangle Action #lightblue {
+    folder bin  #white {
+      artifact "<controller>-<action>"
 
     }
-    CLI ()-- "Action"
-    REST ()-- "Action"
-    Web ()-- "Action"
 
+    folder controllers #white  {
+      folder "<controller>" #lightgreen {
+          artifact "action.js"
+      }
+    }
+
+    folder test #white  {
+      folder "bin" as b #lightgreen {
+        artifact "<controller>-<action>-Bin-Test.js"
+      }
+      folder integration  #lightgreen {
+        artifact "<controller>-<action>-Test.js"
+      }
+    }
+  bin .. controllers
+  controllers .. test
 }
 
 

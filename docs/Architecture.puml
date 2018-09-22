@@ -3,22 +3,52 @@
 skinparam packageStyle rect
 
 package bouquet #lightgray {
-    package "Action" #lightgreen {
-    }
     package "Actor" #lightblue {
     }
-    package "Bin" #lightgreen {
-    }
-    package "Micro-Service" #lightgreen {
-    }
-    package "SubSystem" #lightblue {
-    }
-    package "Test" #lightgreen {
+    package "Test" #pink {
     }
     package "UseCase" #lightblue {
     }
     package "Scenario" #lightblue {
     }
+    package "SubSystem" #lightblue {
+    }
+    package System #white {
+        package "Action" #lightgreen {
+        }
+        package "Bin" #lightgreen {
+        }
+        package "Micro-Service" #lightgreen {
+        }
+        package "Data Model" as Model #lightgreen {
+        }
+        package "View" as View #lightgreen {
+        }
+    }
+
+    UseCase "1" *--> "n" Scenario
+    Actor "n" --> "1" UseCase
+    Actor ..>  Bin
+    SubSystem "1" ..> "n" "Micro-Service"
+    Bin "1" --> "1" Action
+    Scenario .> Action
+    UseCase o-> SubSystem
+    SubSystem ..> Model
+
+    Actor ..> Test
+    UseCase ..> Test
+    Scenario ..> Test
+    "Micro-Service" <-- Action
+    Test -> Action
+
+    Action -> Model
+    "Micro-Service" -> Model
+
+    Actor ..> View
+    UseCase ..> View
+    View --> Action
+
+
 }
 
 @enduml

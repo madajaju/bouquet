@@ -1,55 +1,29 @@
 .. _SubSystem-Bin:
 
 Bin
-============
+===
 
-Bin is a subsystem of bouquet ...
+Bin is a subsystem of bouquet that genreates artifacts for a binary of the system.
 
-Use Cases
----------
 
-*
+Command Line Interface
+----------------------
 
-.. image:: UseCases.png
+Command line interface for the generation of the artifacts of the Actor
 
-Users
------
+.. code-block:: none
 
-* :ref:`Actor-User`
+  # sails generate bouquet-Bin <name> <command>
 
-.. image:: UserInteraction.png
+Generated Artifacts
+-------------------
 
-Uses
-----
+Here is the directory of the generated artifacts.
 
-* :ref:`Bin`
+* bin
 
-Interface
----------
+  * "<system>-<name>-<command>"
 
-* CLI - Command Line Interface
-* REST-API -
-* Portal - Web Portal
-
-Logical Artifacts
------------------
-
-*
 
 .. image:: Logical.png
-
-Activities and Flows
---------------------
-
-.. image::  Process.png
-
-Deployment Architecture
------------------------
-
-.. image:: Deployment.png
-
-Physical Architecture
----------------------
-
-.. image:: Physical.png
 

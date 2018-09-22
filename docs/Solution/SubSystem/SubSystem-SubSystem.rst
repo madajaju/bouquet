@@ -1,55 +1,56 @@
 .. _SubSystem-SubSystem:
 
 SubSystem
-============
+=========
 
-SubSystem is a subsystem of bouquet ...
+SubSystem is a subsystem of bouquet pattern Generator that creates documentation and diagrams for the SubSystem.
+It supports multiple layers of subsystems by nesting parameters to the command line interface.
 
-Use Cases
----------
+Command Line Interface
+----------------------
 
-*
+This can generate multiple levels of the SubSystem architecture.
 
-.. image:: UseCases.png
+.. code-block:: none
 
-Users
------
+  # sails generate bouquet-SubSystem <Name> [Name2]...
 
-* :ref:`Actor-User`
 
-.. image:: UserInteraction.png
 
-Uses
-----
+Artifacts Generated
+-------------------
 
-* :ref:`SubSystem`
+* test
 
-Interface
----------
+  * Solution
 
-* CLI - Command Line Interface
-* REST-API -
-* Portal - Web Portal
+    * <SubSystem>.test.js
 
-Logical Artifacts
------------------
+* docs
 
-*
+  * Solution
+
+    * <Name>
+
+      * index.rst
+      * UseCases.puml
+      * UserInteraction.puml
+      * Logical.puml
+      * Deployment.puml
+      * Logical.puml
+      * Physical.puml
+      * Process.puml
+      * <Name2>
+
+          * index.rst
+          * UseCases.puml
+          * UserInteraction.puml
+          * Logical.puml
+          * Deployment.puml
+          * Logical.puml
+          * Physical.puml
+          * Process.puml
+
 
 .. image:: Logical.png
-
-Activities and Flows
---------------------
-
-.. image::  Process.png
-
-Deployment Architecture
------------------------
-
-.. image:: Deployment.png
-
-Physical Architecture
----------------------
-
-.. image:: Physical.png
 

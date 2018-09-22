@@ -1,14 +1,42 @@
 @startuml
 
-package "Scenario" {
-    interface "Scenario" {
-
-    }
-    CLI ()-- "Scenario"
-    REST ()-- "Scenario"
-    Web ()-- "Scenario"
-
+rectangle parameters #lightgreen {
+    rectangle "use case"
+    rectangle "scenario"
+    rectangle "controller"
+    rectangle "action"
 }
 
+rectangle "Scenario" #lightblue {
+    folder docs #white {
+      folder UseCases #lightgreen {
+        folder "<use case>" #white {
+          artifact "Scenario-<scenario>.rst"
+          artifact "<scenario>.puml"
+          artifact "<scenario>Web.puml"
+        }
+      }
+    }
+
+    folder test #white {
+      folder UseCases as UC #lightgreen {
+        artifact "<use case>_<scenario>.test.js"
+      }
+    }
+    folder api #white {
+      folder controllers #lightgreen {
+        folder "<controller>" #white{
+          artifact "<action>"
+        }
+      }
+    }
+    folder bin #white {
+      artifact "<system>-<controller>-<action>"
+    }
+
+    bin .. api
+    test .. api
+    api ... docs
+}
 
 @enduml

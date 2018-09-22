@@ -1,13 +1,18 @@
 .. _Home:
 
+.. image:: Bouquet.png
+
 bouquet Introduction
 ====================
 
 In the 1990s I started dabbling with a new kind of system analysis.
 Object Oriented system Analysis. I quickly became familiar with all of the great OOA/D tools.
-The one that stood out for me was Rational Rose. I dove right in and over time became quiet proficent in using the tool.
+The one that stood out for me was Rational Rose. I dove right in and over time became quiet proficient in using the tool.
 I quickly started writing scripts to to make my life easier and automate repeated tasks.
-This was the birth of a project named bouquet.
+This was the birth of a project named bouquet. Using the UML 4+1 paradigm to model architectures. Bouquet focused auto-generating
+artifacts that are common in the 4+1 paradigm.
+
+.. image:: UML41.png
 
 Move forward 20 years. I am still using UML to design and architect systems, but I also use
 rapid prototyping technologies like sails, rails and grails. Most recently I am focusing on
@@ -76,6 +81,11 @@ already exist in SailsJS and created a docs and bin directory in the project roo
 This gives me a place to put the design of the architecture as well as the CLI (Command Line interface)
 of the system being architected. This is important because most of the architectures I am working have
 a Web, REST and CLI (Command Line Interface).
+Everywhere I could auto-generate UML diagrams, code, test scripts I did. I followed the following diagram as a guide
+to how the different types of elements where connected together.
+
+.. image:: Architecture.png
+
 
 Directory Hierarchy
 -------------------

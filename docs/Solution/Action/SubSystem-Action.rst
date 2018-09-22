@@ -1,55 +1,40 @@
 .. _SubSystem-Action:
 
 Action
-============
+======
 
-Action is a subsystem of bouquet ...
+Action is a subsystem of bouquet that creates an action to the system.
 
-Use Cases
----------
+Command Line Interface
+----------------------
 
-*
+.. code-block:: none
 
-.. image:: UseCases.png
+  # sails generate bouquet-Action <controller> <action>
 
-Users
------
+Generated Artifacts
+-------------------
 
-* :ref:`Actor-User`
+Directory layout for the Action type.
 
-.. image:: UserInteraction.png
+* bin
 
-Uses
-----
+  * "<controller>-<action>"
 
-* :ref:`Action`
+* api
 
-Interface
----------
+  * controllers
 
-* CLI - Command Line Interface
-* REST-API -
-* Portal - Web Portal
+    * "<controller>"
 
-Logical Artifacts
------------------
+      * "<action>.js"
 
-*
+* test
+
+  * bin
+
+    * "<controller>-<action>-Bin-Test.js"
+    * "<controller>-<action-Test.js"
 
 .. image:: Logical.png
-
-Activities and Flows
---------------------
-
-.. image::  Process.png
-
-Deployment Architecture
------------------------
-
-.. image:: Deployment.png
-
-Physical Architecture
----------------------
-
-.. image:: Physical.png
 

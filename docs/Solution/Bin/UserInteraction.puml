@@ -1,6 +1,0 @@
-@startuml
-actor User
-
-User -> "Bin": UseCase
-
-@enduml

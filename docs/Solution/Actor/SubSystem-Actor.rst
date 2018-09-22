@@ -1,55 +1,51 @@
 .. _SubSystem-Actor:
 
 Actor
-============
+=====
 
-Actor is a subsystem of bouquet ...
+Actor is a subsystem of bouquet that genreates artifacts for the actor of the system.
 
-Use Cases
----------
 
-*
+Command Line Interface
+----------------------
 
-.. image:: UseCases.png
+Command line interface for the generation of the artifacts of the Actor
 
-Users
------
+.. code-block:: none
 
-* :ref:`Actor-User`
+  # sails generate bouquet-Actor <name> <name> <nickname>
 
-.. image:: UserInteraction.png
+Generated Artifacts
+-------------------
 
-Uses
-----
+Here is the directory of the generated artifacts.
 
-* :ref:`Actor`
+* docs
 
-Interface
----------
+  * Actors
 
-* CLI - Command Line Interface
-* REST-API -
-* Portal - Web Portal
+    * <name>
 
-Logical Artifacts
------------------
+      * Activity.puml
+      * "Actor-<name>.rst"
+      * UseCases.puml
+      * Workflow.puml
 
-*
+* api
+
+  * controllers
+
+    * "<name>.js"
+
+* bin
+
+  * "<system>-<name>"
+
+* test
+
+  * Actors
+
+    * "<name>.test.js"
 
 .. image:: Logical.png
-
-Activities and Flows
---------------------
-
-.. image::  Process.png
-
-Deployment Architecture
------------------------
-
-.. image:: Deployment.png
-
-Physical Architecture
----------------------
-
-.. image:: Physical.png
 

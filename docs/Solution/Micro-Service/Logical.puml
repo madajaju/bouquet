@@ -1,0 +1,57 @@
+@startuml
+
+rectangle parameters #lightgreen {
+    rectangle name
+}
+
+rectangle "Micro-Service" #lightblue {
+    folder docs #white {
+      folder Solution #lightgreen {
+        folder Services #white {
+          artifact index.rst #pink
+          folder "<name>" as ssn #lightgreen {
+             artifact "Service-<name>.rst"
+             artifact "UseCase.puml"
+             artifact "UserInteraction.puml"
+             artifact "Logical.puml"
+             artifact "Deployment.puml"
+             artifact "Physical.puml"
+             artifact "Process.puml"
+             artifact "package.json"
+          }
+        }
+      }
+    }
+
+    folder deploy #white {
+      artifact build.js #pink
+      folder dev #lightblue {
+        artifact "docker-compose.yaml" as ddc #pink
+      }
+      folder test #lightblue {
+        artifact "docker-compose.yaml" as tdc #pink
+      }
+      folder production #lightblue {
+        artifact "docker-compose.yaml" as pdc #pink
+      }
+      folder build #lightblue {
+        artifact "docker-compose.yaml" as bdc #pink
+      }
+      folder uservices #lightblue {
+        folder web #white {
+          artifact Dockerfile
+          artifact index.js
+          artifact package.json
+        }
+        folder "<name>" #white {
+          artifact Dockerfile as nd
+          artifact index.js as ni
+          artifact package.json as np
+        }
+      }
+    }
+    deploy ..... docs
+    build .. uservices
+}
+
+@enduml

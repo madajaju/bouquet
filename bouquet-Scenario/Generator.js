@@ -78,12 +78,16 @@ module.exports = {
     scope.diagramName = scope.name + ".puml";
     scope.diagramNameWeb = scope.name + "Web.puml";
     if(scope.args[2] && scope.args[3]) {
+      scope.controller = scope.args[2]
+      scope.action = scope.args[3]
       scope.binNameSpaces = scope.systemName + ' ' + scope.args[2] + ' ' + scope.args[3];
       scope.binName = scope.systemName + '-' + scope.args[2] + '-' + scope.args[3];
       scope.restName = scope.args[2] + '/' + scope.args[3];
     }
     else {
       var names = scope.nameSpaces.split(/\s/);
+      scope.controller = names[1].toLowerCase();
+      scope.action = names[0].toLowerCase();
       scope.binNameSpaces = scope.systemName + ' ' + names[1].toLowerCase() + ' ' + names[0].toLowerCase();
       scope.binName = scope.systemName + '-' + names[1].toLowerCase() + '-' + names[0].toLowerCase();
       scope.restName = names[1].toLowerCase() + '/' + names[0].toLowerCase();
@@ -116,6 +120,10 @@ module.exports = {
     './docs/UseCases/:usecase/:diagramName': { template: 'ScenarioName.puml' },
     './docs/UseCases/:usecase/:diagramNameWeb': { template: 'ScenarioWebInterface.puml' },
     './docs/UseCases/:usecase/:readme': { template: 'index.rst' },
+    './api/controllers/:controller/:action.js': {template: 'action.js'},
+    './test/bin/:controller-:action.test.js': {template: 'bin.test.js'},
+    './test/integration/Controller-:controller-:action.test.js': {template: 'controller.test.js'},
+    './bin/:systemName-:controller-:action': {template: 'bin-action'},
 
     // Creates a folder at a static path
     // './test/UseCases': { folder: { force: true} },

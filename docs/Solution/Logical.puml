@@ -2,7 +2,7 @@
 
 skinparam packageStyle rect
 
-package bouquet #88ffaa {
+package bouquet #lightgreen {
     package "Action" { }
     package "Actor" { }
     package "Bin" { }
@@ -13,18 +13,23 @@ package bouquet #88ffaa {
     package "Use Case" { }
 }
 
-package sails #88aaff {
-    package "api" #dddddd {
-        package "controllers" { }
+package sails #lightblue {
+    folder "api" #dddddd {
+        package "controllers" {
+        }
         package "models" { }
     }
-    package "bin" #dddddd { }
-    package "docs" #dddddd { }
-    package "deploy" #dddddd {
+    folder "bin" #dddddd {
+    }
+    folder "docs" #dddddd {
+    }
+    folder "deploy" #dddddd {
         package "uservices" { }
     }
-    package "test" #dddddd { }
-    package "views" #dddddd { }
+    folder "test" #dddddd {
+    }
+    folder "views" #dddddd {
+    }
 }
 
 Action ..> controllers

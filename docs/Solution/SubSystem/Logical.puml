@@ -1,14 +1,26 @@
 @startuml
 
-package "SubSystem" {
-    interface "SubSystem" {
-
-    }
-    CLI ()-- "SubSystem"
-    REST ()-- "SubSystem"
-    Web ()-- "SubSystem"
-
+rectangle parameters #lightgreen {
+    rectangle Name
 }
 
+rectangle "SubSystem" #lightblue {
+    folder docs #white {
+      folder UseCases #lightgreen {
+        folder <Name> #white {
+          artifact Activities.puml
+          artifact index.rst
+        }
+      }
+    }
+
+    folder test #white {
+      folder UseCases as ts #lightblue {
+        artifact "<Name>-test.js" #white
+      }
+    }
+    test .. docs
+}
 
 @enduml
+

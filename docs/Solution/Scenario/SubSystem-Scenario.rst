@@ -1,55 +1,48 @@
 .. _SubSystem-Scenario:
 
 Scenario
-============
+========
 
-Scenario is a subsystem of bouquet ...
+Scenario is a subsystem of bouquet that generates artifacts for the Scenario.
 
-Use Cases
----------
+Command Line Interface
+----------------------
 
-*
+.. code-block:: none
 
-.. image:: UseCases.png
+  # sails generate bouquet-Scenario <use case> <scenario name> <controller> <action>
 
-Users
------
+Generated Artifacts
+-------------------
 
-* :ref:`Actor-User`
+* api
 
-.. image:: UserInteraction.png
+  * controllers
 
-Uses
-----
+    * "<controller>"
 
-* :ref:`Scenario`
+      * "<action>"
 
-Interface
----------
+* bin
 
-* CLI - Command Line Interface
-* REST-API -
-* Portal - Web Portal
+  * "<system>-<controllers>-<action>"
 
-Logical Artifacts
------------------
+* test
 
-*
+  * UseCases
+
+    * "<use case>_<scenario name>.test.js"
+
+* docs
+
+  * UseCases
+
+    * "<use case>"
+
+      * "Scenario-<scenario name>.rst"
+      * "<scenario name>.puml"
+      * "<scenario name>Web.puml"
 
 .. image:: Logical.png
 
-Activities and Flows
---------------------
-
-.. image::  Process.png
-
-Deployment Architecture
------------------------
-
-.. image:: Deployment.png
-
-Physical Architecture
----------------------
-
-.. image:: Physical.png
 
