@@ -23,7 +23,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: '<%- controller %>/<%- action %>'
     },
     json: {
       responseType: '', // with return json

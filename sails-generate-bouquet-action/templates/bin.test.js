@@ -1,5 +1,5 @@
 const exec = require('child_process').exec;
-const taction = require('../../controllers/<%- controller %>/<%- action %>');
+const taction = require('../../api/controllers/<%- controller %>/<%- action %>');
 
 describe('<%- controller %> <%- action %> Script Test Cases', () => {
   describe('Primary <%- controller %> <%- action %> Test Case', () => {
@@ -16,14 +16,14 @@ describe('<%- controller %> <%- action %> Script Test Cases', () => {
       let results = exec(command, function (err, stdout, stderr) {
         console.log(stderr);
         if (err) {
-          done(err);
+          return done(err);
         }
         else {
           console.log(stdout);
         }
       });
       results.on('exit', function (code) {
-        done(code);
+        return done(code);
       });
     });
   });

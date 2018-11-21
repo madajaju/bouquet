@@ -1,14 +1,15 @@
 @startuml
+ rectangle "UseCase High Level TBD"
+@enduml
 
 left to right direction
 
 :Actor Name: as A1
 
-rectangle "<%= name %>"  #aaffff {
-:Actor Name: as A1
+rectangle "<%= name %>"  #lightblue {
+    :Actor Name: as A1
 
-(Use Case Name) as UCN
+    (Use Case Name) as UCN
 }
 
 
-@enduml

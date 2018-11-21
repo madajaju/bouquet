@@ -1,19 +1,21 @@
 @startuml
+rectangle "Logical Diagram TBD"
+
+@enduml
 
 skinparam packageStyle rect
 
-package <%= projectName %> {
-package "SubSystem1" #aaffff {
-}
-package "SubSystem2" #aaffaa {
-}
-package "SubSystem3" #ffaaaa {
-}
+package "<%= projectName %>" {
+    package "SubSystem1" #lightblue {
+    }
+    package "SubSystem2" #lightgreen {
+    }
+    package "SubSystem3" #pink {
+    }
 }
 
 SubSystem1 --> SubSystem2
 SubSystem2 --> SubSystem3
 
 
-@enduml
 

@@ -1,5 +1,8 @@
 @startuml
 
+rectangle "Logical Diagram TBD"
+
+@enduml
 skinparam packageStyle rect
 
 package <%= projectName %> {
@@ -15,5 +18,4 @@ SubSystem1 --> SubSystem2
 SubSystem2 --> SubSystem3
 
 
-@enduml
 

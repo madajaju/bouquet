@@ -1,5 +1,6 @@
 @startuml
-
+  rectangle "Physical TBD"
+@enduml
 interface external
 
 package "<%= name %>" #lightblue {

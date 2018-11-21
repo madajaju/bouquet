@@ -135,6 +135,7 @@ module.exports = {
     // (Or visit https://sailsjs.com/support and talk to a maintainer of a core or community generator.)
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     './api/controllers/:controller/:action.js': {template: 'action.js'},
+    './views/:controller/:action.ejs': {template: 'view.ejs'},
     './test/bin/:controller-:action.test.js': {template: 'bin.test.js'},
     './test/integration/Controller-:controller-:action.test.js': {template: 'controller.test.js'},
     './bin/:projectName-:controller-:action': {template: 'bin-action'},

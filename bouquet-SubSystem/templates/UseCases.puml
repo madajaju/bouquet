@@ -1,4 +1,6 @@
 @startuml
+  rectangle "UseCase Diagram TBD"
+@enduml
 
 left to right direction
 
@@ -16,4 +18,3 @@ UC1 --> UC2
 UC2 --> SubSystem
 }
 
-@enduml

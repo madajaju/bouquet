@@ -1,5 +1,6 @@
 @startuml
-
+rectangle "Logical TBD"
+@enduml
 package "<%= name %>" #lightblue {
     interface "<%= name %>" {
 
@@ -10,4 +11,4 @@ package "<%= name %>" #lightblue {
 }
 
 
-@enduml
+

@@ -1,6 +1,10 @@
 @startuml
 
-package  <%= projectName %> {
+rectangle "Deployment Diagram TBD"
+
+@enduml
+
+package  "<%= projectName %>" {
   cloud cloud1
   node node1
   artifact artifact1
@@ -9,4 +13,3 @@ package  <%= projectName %> {
   folder folder1
 }
 
-@enduml

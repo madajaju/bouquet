@@ -1,4 +1,6 @@
 @startuml
+  rectangle "User Interface Diagram TBD"
+@enduml
 
 salt
 {
@@ -10,4 +12,3 @@ salt
   }
 }
 
-@enduml

@@ -1,5 +1,6 @@
 @startuml
-
+rectangle "Activity Diagram TBD"
+@enduml
 
 partition "<%= nameSpaces %>"  #cccccc {
   (*) --> "Start Here"
@@ -9,4 +10,3 @@ partition "<%= projectName %>" #lightblue {
   "Start Here" --> "Here"
 }
 
-@enduml

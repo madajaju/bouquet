@@ -1,6 +1,8 @@
 @startuml
+  rectangle "User Interaction TBD"
+@enduml
+
 actor User
 
 User -> "<%= name %>": UseCase
 
-@enduml

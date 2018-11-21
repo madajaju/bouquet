@@ -1,40 +1,49 @@
-# Architectural Overview
+Generic Solution Overview
+=========================
 
-_Description_
+*description*
 
-## [Users](Actors)
+Users
+-----
 
- * _Actor_
+* :ref:`Actor-User`
 
-## High level Use Cases
+Use Cases
+---------
 
-* _UseCases_
+* :ref:`UseCase-Manage-System`
 
-![Image](./UseCases/UseCases.png)
+.. image:: /UseCases/UseCases.png
 
-## Logical Architecture
+Logical Architecture
+--------------------
 
-_Description_
+*description*
 
-![Image](./Solution/Logical.png)
+* :ref:`SubSystem-System` - *description*
 
-_Systems_
+.. image:: Logical.png
 
-## Process Architecture
+Process Architecture
+--------------------
 
-![Image](./Solution/Processs.png)
+The subsystems of <%= projectName %> request information from each other to accomplish the use cases of the system.
+This diagram shows how these microservices are connected and what they share between each other.
 
-## Deployment model
+.. image:: Process.png
 
-_Description_
+Deployment model
+----------------
 
-![Image](./Solution/Deployment.png)
+The architecture consists of several micro services that form the application this diagram shows how those
+microservices are connected together, deployed and storage requirements.
 
-## Physical Architecture
+.. image:: Deployment.png
 
-_Description_
+Physical Architecture
+---------------------
 
-![Image](./Solution/Physical.png)
+This is the physical layout of microservices on the nodes in a Cloud or multiple Clouds.
 
-_Systems_
+.. image:: Physical.png
 

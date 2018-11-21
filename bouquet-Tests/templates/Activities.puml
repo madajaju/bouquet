@@ -1,4 +1,7 @@
 @startuml
+  rectangle "Activities Diagram TBD"
+@enduml
+
 |actorName|
 start
 |#ffffaa|<%= systemName %>|
@@ -6,4 +9,3 @@ start
 |actor2|
 :activity2;
 stop
-@enduml

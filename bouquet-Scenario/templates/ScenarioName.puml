@@ -1,4 +1,7 @@
 @startuml
+rectangle "Scenario Diagram TBD"
+@enduml
+
 Actor "actorName" as A
 
 box "<%= usecase %>" #lightblue
@@ -11,4 +14,3 @@ A -> Web : <%= restName %>()
 Web -> S : <%= restName %>()
 end box
 
-@enduml

@@ -1,4 +1,6 @@
 @startuml
+  rectangle "Logical Diagram TBD"
+@enduml
 
 package "User" #ffffcc {
 
@@ -21,4 +23,3 @@ package "<%= nameSpaces %>" #lightblue {
 User --> "<%= nameSpaces %>"
 "<%= nameSpaces %>" --> Used
 
-@enduml

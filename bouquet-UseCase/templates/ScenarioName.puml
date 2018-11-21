@@ -1,4 +1,7 @@
 @startuml
+  rectangle "Scenario Diagram TBD"
+@enduml
+
 Actor "actorName" as A
 
 box "<%= systemName %>" #lightblue
@@ -6,4 +9,3 @@ participant "Component" as C
 A -> C
 end box
 
-@enduml

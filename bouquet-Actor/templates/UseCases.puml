@@ -1,4 +1,6 @@
 @startuml
+rectangle "UseCase Diagram TBD"
+@enduml
 
 left to right direction
 
@@ -10,4 +12,3 @@ rectangle "<%= projectName %>" #lightblue {
 
 Actor --> U1
 
-@enduml

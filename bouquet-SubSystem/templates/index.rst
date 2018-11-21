@@ -69,4 +69,8 @@ forwarded to micro-services through the REST interface of each micro-service.
 Micro-Services
 --------------
 
+These are the micro-services for the subsystem. The combination of the micro-services help implement
+the subsystem's logic.
+
 * :ref:`Service-service-name`
+

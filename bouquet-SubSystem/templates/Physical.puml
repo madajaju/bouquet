@@ -1,4 +1,6 @@
 @startuml
+  rectangle "Physical Diagram TBD"
+@enduml
 
 package "<%= nameSpaces %>" #lightblue {
   interface CLI
@@ -27,4 +29,3 @@ REST -- sailsjs
 Web -- sails.io
 REST -- micro
 
-@enduml

@@ -1,4 +1,6 @@
 @startuml
+  rectangle "User Interaction TBD"
+@enduml
 actor User
 
 User -> "<%= nameSpaces %>": UseCase

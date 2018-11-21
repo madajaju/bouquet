@@ -1,4 +1,6 @@
 @startuml
+  rectangle "Deployment Diagram TBD"
+@enduml
 
 package  "<%= nameSpaces %>"  #lightblue {
   folder bin #ffffff {
@@ -22,4 +24,3 @@ package  "<%= nameSpaces %>"  #lightblue {
   sailsjs -> micro
 }
 
-@enduml

@@ -1,4 +1,6 @@
 @startuml
+rectangle "Class Overview TBD"
+@enduml
 
 package "<%= subsystem.name %>" #dddddd {}
 
@@ -15,4 +17,3 @@ package "<%= system.name %>"  #ffffaa {
 }
 "CLI" -- "Class1"
 
-@enduml

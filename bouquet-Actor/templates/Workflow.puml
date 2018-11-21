@@ -1,4 +1,7 @@
 @startuml
+rectangle "Workflow TBD"
+@enduml
+
 |<%= nameSpaces %>|
 start
 |#ffffaa|<%= projectName %>|
@@ -17,4 +20,4 @@ fork end
 :Launch an Application in an environment;
 :Kill Application and Services;
 stop
-@enduml
+

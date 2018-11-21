@@ -1,5 +1,9 @@
 @startuml
 
+rectangle "Activity diagram TBD"
+
+@enduml
+
 partition IDE  #cccccc {
   (*) --> "Create Project"
   --> ===S1===
@@ -41,4 +45,3 @@ partition CI/CD #cccccc {
   "Launch Application (Test)" -> "Execute Tests"
 }
 
-@enduml
