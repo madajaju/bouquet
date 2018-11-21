@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-bouquet-bin",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "sails generate bouquet-bin",
   "main": "Generator.js",
   "scripts": {
